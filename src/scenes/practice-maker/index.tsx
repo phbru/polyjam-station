@@ -1,7 +1,5 @@
 const PracticeMaker = () => {
-    return (
-        PracticeMaker
-      );
-}
- 
+  return PracticeMaker;
+};
+
 export default PracticeMaker;
