@@ -1,12 +1,11 @@
 import { songsData } from "../../data/songsData";
-import { Song } from "../../interfaces/Song";
 import Checkbox from "@mui/material/Checkbox";
 import { useState } from "react";
 import { SongListElementState } from "../../interfaces/SongListElementState";
 
-interface SongComponentProps {
-  song: Song;
-}
+// interface SongComponentProps {
+//   song: Song;
+// }
 
 // const SongComponent = (props: SongComponentProps) => {
 //   const [checked, setChecked] = useState(false);
