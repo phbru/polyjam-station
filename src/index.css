@@ -33,3 +33,18 @@ body,
 ::-webkit-scrollbar-track:hover {
   background: #555;
 }
+
+ul {
+  margin: 0;
+  padding: 0;
+  font-size: 0.8rem;
+}
+
+ul li {
+  margin-bottom: 0px; /* Adjust this value for your desired spacing */
+  margin-left: 1rem; /* Add some left padding for indentation */
+}
+
+.song-component__name {
+  margin: 0;
+}

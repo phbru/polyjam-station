@@ -1,7 +1,9 @@
-export const songs = {
+import { SongData } from "../interfaces/SongData";
+
+export const songsData: SongData = {
   "Bad Romance": {
     name: "Bad Romance",
-    instruments: {
+    performers: {
       Sing1: "Mona",
       Sing2: "Rivs",
       Sing3: "Pierre",
@@ -15,7 +17,7 @@ export const songs = {
   },
   "Bennie and The Jets": {
     name: "Bennie and The Jets",
-    instruments: {
+    performers: {
       Sing1: "Mélissa",
       Sing2: "Rivs",
       Guit1: "Valentin",
@@ -29,7 +31,7 @@ export const songs = {
   },
   "Blinding Lights (With added guitar)": {
     name: "Blinding Lights (With added guitar)",
-    instruments: {
+    performers: {
       Sing1: "Milla",
       Sing2: "Mélissa",
       Guit1: "Sebastien",
