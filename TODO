@@ -1,0 +1,8 @@
+[] Goal 1 : when clicking on checkbox, it generates a set of performers
+
+[] Goal 2 : the dashboards displays a list of days where the checked songs are possible
+..> the list of days is gotten from the set of performers and their availabilities
+
+[] Goal 3 : third section of the dashboard displays a date picker
+..> selecting a date displays the songs possible on that day
+....> selecting checks for each song if every performer is available on that day
