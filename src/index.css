@@ -47,6 +47,12 @@ ul li {
   margin-left: 1rem; /* Add some left padding for indentation */
 }
 
+/* Dashboard style */
+.song-section {
+  border-right: solid;
+  width: 12rem;
+}
+
 /* Song component style */
 .song-component {
   margin-top: 1rem;

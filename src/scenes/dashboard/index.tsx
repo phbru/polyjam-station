@@ -25,9 +25,11 @@ const Dashboard = () => {
   const songNames: string[] = Object.keys(songsData);
   return (
     <div>
-      {songNames.map((songName) => (
-        <SongComponent song={songsData[songName]} />
-      ))}
+      <div className="song-section">
+        {songNames.map((songName) => (
+          <SongComponent song={songsData[songName]} />
+        ))}
+      </div>
     </div>
   );
 };
