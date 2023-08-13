@@ -34,15 +34,22 @@ body,
   background: #555;
 }
 
+/* List style */
 ul {
   margin: 0;
   padding: 0;
   font-size: 0.8rem;
+  list-style-type: none;
 }
 
 ul li {
   margin-bottom: 0px; /* Adjust this value for your desired spacing */
   margin-left: 1rem; /* Add some left padding for indentation */
+}
+
+/* Song component style */
+.song-component {
+  margin-top: 1rem;
 }
 
 .song-component__name {
