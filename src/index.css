@@ -48,9 +48,14 @@ ul li {
 }
 
 /* Dashboard style */
+.dashboard {
+  display: flex;
+}
 .song-section {
   border-right: solid;
   width: 12rem;
+}
+.available-dates-section {
 }
 
 /* Song component style */

@@ -1,4 +1,5 @@
 import { songsData } from "../../data/songsData";
+import { availabilities } from "../..data/availabilities";
 import Checkbox from "@mui/material/Checkbox";
 import { useState } from "react";
 import { SongListElementState } from "../../interfaces/SongListElementState";
@@ -44,6 +45,10 @@ const Dashboard = () => {
     });
   }
 
+  const [selectedPerformers, setSelectedPerformers] = useState<Set<string>>(
+    new Set()
+  );
+
   const [songsList, setSongsList] =
     useState<Array<SongListElementState>>(songListState);
 
@@ -51,14 +56,29 @@ const Dashboard = () => {
     event: React.ChangeEvent<HTMLInputElement>,
     songIndex: number
   ) => {
+    const updatedSelectedPerformers = new Set(selectedPerformers);
     const updatedSongs = [...songsList];
+
     updatedSongs[songIndex].checked = event.target.checked;
-    setSongsList(updatedSongs); // Assuming you're using React state to manage songsList
+    setSongsList(updatedSongs);
     console.log(songsList);
+
+    for (const performer of Object.values(
+      songsList[songIndex].content.performers
+    )) {
+      if (event.target.checked) {
+        updatedSelectedPerformers.add(performer);
+      } else {
+        updatedSelectedPerformers.delete(performer);
+      }
+    }
+
+    setSelectedPerformers(updatedSelectedPerformers);
+    console.log(updatedSelectedPerformers);
   };
 
   return (
-    <div>
+    <div className="dashboard">
       <div className="song-section">
         {songsList.map((song, index) => (
           <div className="song-component" key={index}>
@@ -85,6 +105,12 @@ const Dashboard = () => {
         {/* {songNames.map((songName) => (
           <SongComponent song={songsData[songName]} />
         ))} */}
+      </div>
+      <div className="available-dates-section">
+        <h3>Journées possibles</h3>
+        {[...selectedPerformers].map((item, index) => (
+          <p key={index}>{item}</p>
+        ))}
       </div>
     </div>
   );
