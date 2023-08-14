@@ -1,8 +1,11 @@
 import { songsData } from "../../data/songsData";
-import { availabilities } from "../..data/availabilities";
+import { availabilities } from "../../data/availabilitiesData";
 import Checkbox from "@mui/material/Checkbox";
 import { useState } from "react";
 import { SongListElementState } from "../../interfaces/SongListElementState";
+import { Availabilities } from "../../interfaces/Availabilities";
+import { TimeInterval } from "../../interfaces/TimeInterval";
+import { Time } from "../../interfaces/Time";
 
 // interface SongComponentProps {
 //   song: Song;
@@ -33,8 +36,83 @@ import { SongListElementState } from "../../interfaces/SongListElementState";
 //   );
 // };
 
+function findTimeOverlap(
+  interval1: TimeInterval,
+  interval2: TimeInterval
+): TimeInterval | null {
+  if (
+    interval1.end.isEarlierOrEqualTo(interval2.start) ||
+    interval2.end.isEarlierOrEqualTo(interval1.start)
+  ) {
+    return null;
+  }
+
+  const overlapStart: Time = interval1.start.isLaterOrEqualTo(interval2.start)
+    ? interval1.start
+    : interval2.start;
+  const overlapEnd: Time = interval1.end.isEarlierOrEqualTo(interval2.end)
+    ? interval1.end
+    : interval2.end;
+
+  return { start: overlapStart, end: overlapEnd };
+}
+
+// function overlapOfTwoIntervalArrays(
+//   intevalGroup1: Array<TimeInterval>,
+//   intevalGroup2: Array<TimeInterval>
+// ): null | Array<TimeInterval> {}
+
+// function findCumulativeOverlap(collection of intervals){
+
+// }
+
+function findDatesForSelectedPerformers(
+  availabilities: Availabilities,
+  performers: Set<string>
+): string[] {
+  const selectedDates: string[] = [];
+
+  for (const date in availabilities) {
+    const availablePerformers = new Set<string>(
+      Object.keys(availabilities[date])
+    );
+
+    // Check if all selected performers are available on this date
+    if (
+      [...performers].every((performer) => availablePerformers.has(performer))
+    ) {
+      selectedDates.push(date);
+    }
+  }
+
+  return selectedDates;
+}
+
 const Dashboard = () => {
+  //TEST
+  const time11: TimeInterval = {
+    start: new Time("19:00"),
+    end: new Time("19:15"),
+  };
+  const time12: TimeInterval = {
+    start: new Time("17:00"),
+    end: new Time("20:00"),
+  };
+  console.log("TESTT 1");
+  console.log(findTimeOverlap(time11, time12));
+
+  console.log("TESTT 2");
+  const time21: TimeInterval = {
+    start: new Time("18:00"),
+    end: new Time("20:00"),
+  };
+  const time22: TimeInterval = {
+    start: new Time("17:00"),
+    end: new Time("19:00"),
+  };
+  console.log(findTimeOverlap(time21, time22));
   const songListState: Array<SongListElementState> = [];
+  const importedAvailabilities: Availabilities = availabilities;
 
   for (const [songName, songContent] of Object.entries(songsData)) {
     songListState.push({
@@ -44,6 +122,7 @@ const Dashboard = () => {
       priority: undefined,
     });
   }
+  const [possibleDays, setPossibleDays] = useState<Array<string>>([]);
 
   const [selectedPerformers, setSelectedPerformers] = useState<Set<string>>(
     new Set()
@@ -75,7 +154,13 @@ const Dashboard = () => {
 
     setSelectedPerformers(updatedSelectedPerformers);
     console.log(updatedSelectedPerformers);
+
+    setPossibleDays(
+      findDatesForSelectedPerformers(availabilities, updatedSelectedPerformers)
+    );
   };
+
+  console.log(importedAvailabilities);
 
   return (
     <div className="dashboard">
@@ -108,8 +193,12 @@ const Dashboard = () => {
       </div>
       <div className="available-dates-section">
         <h3>Journées possibles</h3>
-        {[...selectedPerformers].map((item, index) => (
+        {/* {[...selectedPerformers].map((item, index) => (
           <p key={index}>{item}</p>
+        ))} */}
+
+        {possibleDays.map((item) => (
+          <p>{item}</p>
         ))}
       </div>
     </div>

@@ -1,5 +1,5 @@
-import { TimeInterval } from "./TimeInterval";
+import { TimeIntervalString } from "./TimeIntervalString";
 
 export interface Availability {
-  [person: string]: Array<TimeInterval>;
+  [person: string]: Array<TimeIntervalString>;
 }

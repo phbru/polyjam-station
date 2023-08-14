@@ -1,4 +1,6 @@
+import { Time } from "./Time";
+
 export interface TimeInterval {
-  start: string;
-  end: string;
+  start: Time;
+  end: Time;
 }
