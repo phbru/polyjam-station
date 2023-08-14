@@ -57,14 +57,47 @@ function findTimeOverlap(
   return { start: overlapStart, end: overlapEnd };
 }
 
-// function overlapOfTwoIntervalArrays(
-//   intevalGroup1: Array<TimeInterval>,
-//   intevalGroup2: Array<TimeInterval>
-// ): null | Array<TimeInterval> {}
+function findTimeOverlapBetweenTwoGroups(
+  intervalGroup1: Array<TimeInterval>,
+  intervalGroup2: Array<TimeInterval>
+): null | Array<TimeInterval> {
+  const overlapIntervals: Array<TimeInterval> = [];
 
-// function findCumulativeOverlap(collection of intervals){
+  for (const interval1 of intervalGroup1) {
+    for (const interval2 of intervalGroup2) {
+      const overlap = findTimeOverlap(interval1, interval2);
+      if (overlap) {
+        overlapIntervals.push(overlap);
+      }
+    }
+  }
+  if (overlapIntervals.length === 0) return null;
+  return overlapIntervals;
+}
 
-// }
+function findCumulativeOverlap(
+  availabilities: Array<Array<TimeInterval>>
+): null | Array<TimeInterval> {
+  let cumulativeOverlap: Array<TimeInterval> = [
+    {
+      start: new Time(0, 0),
+      end: new Time(23, 59),
+    },
+  ];
+
+  for (const availability of availabilities) {
+    const overlapGroups = findTimeOverlapBetweenTwoGroups(
+      cumulativeOverlap,
+      availability
+    );
+    if (!overlapGroups) {
+      return null;
+    }
+    cumulativeOverlap = overlapGroups;
+  }
+
+  return cumulativeOverlap;
+}
 
 function findDatesForSelectedPerformers(
   availabilities: Availabilities,
@@ -114,6 +147,25 @@ const Dashboard = () => {
   const songListState: Array<SongListElementState> = [];
   const importedAvailabilities: Availabilities = availabilities;
 
+  console.log("TEST 3");
+  const intervalsA: Array<TimeInterval> = [
+    { start: new Time(15, 0), end: new Time(16, 0) },
+    { start: new Time(18, 0), end: new Time(19, 0) },
+  ];
+  const intervalsB: Array<TimeInterval> = [
+    { start: new Time(15, 30), end: new Time(18, 30) },
+    { start: new Time(18, 45), end: new Time(22, 0) },
+  ];
+  const intervalsC: Array<TimeInterval> = [
+    { start: new Time(15, 0), end: new Time(17, 30) },
+    { start: new Time(18, 30), end: new Time(19, 0) },
+  ];
+  console.log(findTimeOverlapBetweenTwoGroups(intervalsA, intervalsB));
+
+  console.log("TEST 4");
+
+  console.log(findCumulativeOverlap([intervalsA, intervalsB, intervalsC]));
+
   for (const [songName, songContent] of Object.entries(songsData)) {
     songListState.push({
       songName: songName,
@@ -161,6 +213,8 @@ const Dashboard = () => {
   };
 
   console.log(importedAvailabilities);
+
+  selectedPerformers;
 
   return (
     <div className="dashboard">
