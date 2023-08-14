@@ -1,6 +1,9 @@
 export const availabilities = {
   "2023-09-01": {
-    Mona: [{ start: "17:00", end: "22:00" }],
+    Mona: [
+      { start: "15:00", end: "18:00" },
+      { start: "19:00", end: "22:00" },
+    ],
     Rivs: [{ start: "17:00", end: "22:00" }],
     Pierre: [{ start: "17:00", end: "22:00" }],
     Valentin: [{ start: "17:00", end: "22:00" }],

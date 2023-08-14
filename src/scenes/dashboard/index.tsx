@@ -162,9 +162,39 @@ const Dashboard = () => {
   ];
   console.log(findTimeOverlapBetweenTwoGroups(intervalsA, intervalsB));
 
+  const [selectedPerformers, setSelectedPerformers] = useState<Set<string>>(
+    new Set()
+  );
+
+  const allAvailabilities: Array<Array<TimeInterval>> = [];
+  for (const person of selectedPerformers) {
+    const availabilitiesTimeFormat: Array<TimeInterval> = [];
+    for (const timeIntervalString of importedAvailabilities["2023-09-01"][
+      person
+    ]) {
+      availabilitiesTimeFormat.push({
+        start: new Time(timeIntervalString.start),
+        end: new Time(timeIntervalString.end),
+      });
+    }
+
+    allAvailabilities.push(availabilitiesTimeFormat);
+  }
+
+  console.log("values: ", Object.keys(importedAvailabilities["2023-09-01"]));
+  console.log("allAvailabilities", allAvailabilities);
+  console.log(
+    'importedAvailabilities["2023-09-01"]: ',
+    importedAvailabilities["2023-09-01"]
+  );
+
   console.log("TEST 4");
 
   console.log(findCumulativeOverlap([intervalsA, intervalsB, intervalsC]));
+
+  console.log("TEST 5");
+  const cumulativeOveral = findCumulativeOverlap(allAvailabilities);
+  console.log(cumulativeOveral);
 
   for (const [songName, songContent] of Object.entries(songsData)) {
     songListState.push({
@@ -174,11 +204,8 @@ const Dashboard = () => {
       priority: undefined,
     });
   }
-  const [possibleDays, setPossibleDays] = useState<Array<string>>([]);
 
-  const [selectedPerformers, setSelectedPerformers] = useState<Set<string>>(
-    new Set()
-  );
+  const [possibleDays, setPossibleDays] = useState<Array<string>>([]);
 
   const [songsList, setSongsList] =
     useState<Array<SongListElementState>>(songListState);
@@ -211,8 +238,6 @@ const Dashboard = () => {
       findDatesForSelectedPerformers(availabilities, updatedSelectedPerformers)
     );
   };
-
-  console.log(importedAvailabilities);
 
   selectedPerformers;
 
