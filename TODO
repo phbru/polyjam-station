@@ -1,4 +1,4 @@
-[] Goal 1 : when clicking on checkbox, it generates a set of performers
+[X] Goal 1 : when clicking on checkbox, it generates a set of performers
 
 [] Goal 2 : the dashboards displays a list of days where the checked songs are possible
 ..> the list of days is gotten from the set of performers and their availabilities
