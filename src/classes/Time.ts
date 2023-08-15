@@ -32,4 +32,10 @@ export class Time {
     }
     return false;
   }
+
+  toString(): string {
+    const formattedMinutes =
+      this.minutes < 10 ? `0${this.minutes}` : `${this.minutes}`;
+    return `${this.hours}:${formattedMinutes}`;
+  }
 }

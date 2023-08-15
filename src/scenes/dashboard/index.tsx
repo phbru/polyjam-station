@@ -8,7 +8,9 @@ import { TimeInterval } from "../../interfaces/TimeInterval";
 import {
   convertAvailabilities,
   findCumulativeOverlap,
+  findPossibleIntervals,
 } from "./helperFunctions";
+import { Availability } from "../../interfaces/Availability";
 
 const Dashboard = () => {
   // Data  -----------------------------------------------------
@@ -46,9 +48,6 @@ const Dashboard = () => {
     new Set()
   );
   // to display availabilities per date
-  const [possibleIntervalsEachDay, setPossibleIntervalsEachDay] = useState<
-    Array<[string, Array<TimeInterval>]>
-  >([]);
 
   // state for the songs
   const [songsList, setSongsList] =
@@ -78,11 +77,15 @@ const Dashboard = () => {
 
     setSelectedPerformers(updatedSelectedPerformers);
     console.log(updatedSelectedPerformers);
-
-    setPossibleDays(
-      findDatesForSelectedPerformers(availabilities, updatedSelectedPerformers)
-    );
   };
+
+  let possibleIntervals: Array<[string, null | Array<TimeInterval>]> = [];
+  possibleIntervals = findPossibleIntervals(
+    convertedAvailabilities,
+    selectedPerformers
+  );
+
+  console.log(possibleIntervals);
 
   return (
     <div className="dashboard">
@@ -111,9 +114,15 @@ const Dashboard = () => {
       </div>
       <div className="available-dates-section">
         <h3>Journées possibles</h3>
-        {possibleIntervalsEachDay.map((item) => (
-          <h4>{item[0]}</h4>
-          // {item[1] === undefined}
+        {possibleIntervals.map((item) => (
+          <div>
+            <h4>{item[0]}</h4>
+            {item[1]?.map((x, subIndex) => (
+              <p key={subIndex}>
+                [{x.start.toString()} , {x.end.toString()}]
+              </p>
+            ))}
+          </div>
         ))}
       </div>
     </div>
