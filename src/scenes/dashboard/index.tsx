@@ -5,130 +5,21 @@ import { useState } from "react";
 import { SongListElementState } from "../../interfaces/SongListElementState";
 import { Availabilities } from "../../interfaces/Availabilities";
 import { TimeInterval } from "../../interfaces/TimeInterval";
-import { Time } from "../../classes/Time";
-
-// interface SongComponentProps {
-//   song: Song;
-// }
-
-// const SongComponent = (props: SongComponentProps) => {
-//   const [checked, setChecked] = useState(false);
-
-//   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-//     setChecked(event.target.checked);
-//     console.log(checked ? "checked" : "unchecked");
-//   };
-
-//   return (
-//     <div className="song-component">
-//       <h4 className="song-component__name">
-//         {props.song.name} <Checkbox checked={checked} onChange={handleChange} />
-//       </h4>
-//       {Object.entries(props.song.performers).map(([instrument, performer]) => (
-//         <ul key={instrument}>
-//           <li>
-//             <strong>{instrument} :</strong>
-//             {performer}
-//           </li>
-//         </ul>
-//       ))}
-//     </div>
-//   );
-// };
-
-function findTimeOverlap(
-  interval1: TimeInterval,
-  interval2: TimeInterval
-): TimeInterval | null {
-  if (
-    interval1.end.isEarlierOrEqualTo(interval2.start) ||
-    interval2.end.isEarlierOrEqualTo(interval1.start)
-  ) {
-    return null;
-  }
-
-  const overlapStart: Time = interval1.start.isLaterOrEqualTo(interval2.start)
-    ? interval1.start
-    : interval2.start;
-  const overlapEnd: Time = interval1.end.isEarlierOrEqualTo(interval2.end)
-    ? interval1.end
-    : interval2.end;
-
-  return { start: overlapStart, end: overlapEnd };
-}
-
-function findTimeOverlapBetweenTwoGroups(
-  intervalGroup1: Array<TimeInterval>,
-  intervalGroup2: Array<TimeInterval>
-): null | Array<TimeInterval> {
-  const overlapIntervals: Array<TimeInterval> = [];
-
-  for (const interval1 of intervalGroup1) {
-    for (const interval2 of intervalGroup2) {
-      const overlap = findTimeOverlap(interval1, interval2);
-      if (overlap) {
-        overlapIntervals.push(overlap);
-      }
-    }
-  }
-  if (overlapIntervals.length === 0) return null;
-  return overlapIntervals;
-}
-
-function findCumulativeOverlap(
-  availabilities: Array<Array<TimeInterval>>
-): null | Array<TimeInterval> {
-  let cumulativeOverlap: Array<TimeInterval> = [
-    {
-      start: new Time(0, 0),
-      end: new Time(23, 59),
-    },
-  ];
-
-  for (const availability of availabilities) {
-    const overlapGroups = findTimeOverlapBetweenTwoGroups(
-      cumulativeOverlap,
-      availability
-    );
-    if (!overlapGroups) {
-      return null;
-    }
-    cumulativeOverlap = overlapGroups;
-  }
-
-  return cumulativeOverlap;
-}
-
-function findDatesForSelectedPerformers(
-  availabilities: Availabilities,
-  performers: Set<string>
-): string[] {
-  const selectedDates: string[] = [];
-
-  for (const date in availabilities) {
-    const availablePerformers = new Set<string>(
-      Object.keys(availabilities[date])
-    );
-
-    // Check if all selected performers are available on this date
-    if (
-      [...performers].every((performer) => availablePerformers.has(performer))
-    ) {
-      selectedDates.push(date);
-    }
-  }
-
-  return selectedDates;
-}
+import {
+  convertAvailabilities,
+  findCumulativeOverlap,
+} from "./helperFunctions";
 
 const Dashboard = () => {
   // Data  -----------------------------------------------------
   // availabilities :
-  const importedAvailabilities: Availabilities = availabilities;
-  const allAvailabilities: Array<Array<TimeInterval>> = [];
+  const convertedAvailabilities: Availabilities =
+    convertAvailabilities(availabilities);
+  console.log(convertedAvailabilities);
 
   // songs :
   const songListState: Array<SongListElementState> = [];
+  const allMusicians: Set<string> = new Set();
   for (const [songName, songContent] of Object.entries(songsData)) {
     songListState.push({
       songName: songName,
@@ -136,7 +27,17 @@ const Dashboard = () => {
       content: songContent,
       priority: undefined,
     });
+
+    for (const musician of Object.values(songContent.performers)) {
+      allMusicians.add(musician);
+    }
   }
+
+  console.log(
+    "first day CUMULATIVE availabilities : ",
+    findCumulativeOverlap(Object.values(convertedAvailabilities["2023-09-01"]))
+  );
+
   // ------------------------------------------------------------------
 
   // State hooks -------------------------------------------
