@@ -5,7 +5,7 @@ import { useState } from "react";
 import { SongListElementState } from "../../interfaces/SongListElementState";
 import { Availabilities } from "../../interfaces/Availabilities";
 import { TimeInterval } from "../../interfaces/TimeInterval";
-import { Time } from "../../interfaces/Time";
+import { Time } from "../../classes/Time";
 
 // interface SongComponentProps {
 //   song: Song;

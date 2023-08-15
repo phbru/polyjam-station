@@ -1,4 +1,4 @@
-import { Time } from "./Time";
+import { Time } from "../classes/Time";
 
 export interface TimeInterval {
   start: Time;
