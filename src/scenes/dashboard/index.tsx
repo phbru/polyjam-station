@@ -122,80 +122,29 @@ function findDatesForSelectedPerformers(
 }
 
 const Dashboard = () => {
-  //TEST
-  const time11: TimeInterval = {
-    start: new Time("19:00"),
-    end: new Time("19:15"),
-  };
-  const time12: TimeInterval = {
-    start: new Time("17:00"),
-    end: new Time("20:00"),
-  };
-  console.log("TESTT 1");
-  console.log(findTimeOverlap(time11, time12));
-
-  console.log("TESTT 2");
-  const time21: TimeInterval = {
-    start: new Time("18:00"),
-    end: new Time("20:00"),
-  };
-  const time22: TimeInterval = {
-    start: new Time("17:00"),
-    end: new Time("19:00"),
-  };
-  console.log(findTimeOverlap(time21, time22));
-  const songListState: Array<SongListElementState> = [];
+  // Data  -----------------------------------------------------
+  // availabilities :
   const importedAvailabilities: Availabilities = availabilities;
-
-  console.log("TEST 3");
-  const intervalsA: Array<TimeInterval> = [
-    { start: new Time(15, 0), end: new Time(16, 0) },
-    { start: new Time(18, 0), end: new Time(19, 0) },
-  ];
-  const intervalsB: Array<TimeInterval> = [
-    { start: new Time(15, 30), end: new Time(18, 30) },
-    { start: new Time(18, 45), end: new Time(22, 0) },
-  ];
-  const intervalsC: Array<TimeInterval> = [
-    { start: new Time(15, 0), end: new Time(17, 30) },
-    { start: new Time(18, 30), end: new Time(19, 0) },
-  ];
-  console.log(findTimeOverlapBetweenTwoGroups(intervalsA, intervalsB));
-
-  const [selectedPerformers, setSelectedPerformers] = useState<Set<string>>(
-    new Set()
-  );
-
   const allAvailabilities: Array<Array<TimeInterval>> = [];
-  for (const person of selectedPerformers) {
-    const availabilitiesTimeFormat: Array<TimeInterval> = [];
-    for (const timeIntervalString of importedAvailabilities["2023-09-01"][
-      person
-    ]) {
-      availabilitiesTimeFormat.push({
-        start: new Time(timeIntervalString.start),
-        end: new Time(timeIntervalString.end),
-      });
-    }
+  // for (const person of selectedPerformers) {
+  //   const availabilitiesTimeFormat: Array<TimeInterval> = [];
+  //   for (const timeIntervalString of importedAvailabilities["2023-09-01"][
+  //     person
+  //   ]) {
+  //     availabilitiesTimeFormat.push({
+  //       start: new Time(timeIntervalString.start),
+  //       end: new Time(timeIntervalString.end),
+  //     });
+  //   }
 
-    allAvailabilities.push(availabilitiesTimeFormat);
-  }
+  //   allAvailabilities.push(availabilitiesTimeFormat);
+  // }
 
-  console.log("values: ", Object.keys(importedAvailabilities["2023-09-01"]));
-  console.log("allAvailabilities", allAvailabilities);
-  console.log(
-    'importedAvailabilities["2023-09-01"]: ',
-    importedAvailabilities["2023-09-01"]
-  );
+  // const cumulativeOveral = findCumulativeOverlap(allAvailabilities);
+  // console.log(cumulativeOveral);
 
-  console.log("TEST 4");
-
-  console.log(findCumulativeOverlap([intervalsA, intervalsB, intervalsC]));
-
-  console.log("TEST 5");
-  const cumulativeOveral = findCumulativeOverlap(allAvailabilities);
-  console.log(cumulativeOveral);
-
+  // songs :
+  const songListState: Array<SongListElementState> = [];
   for (const [songName, songContent] of Object.entries(songsData)) {
     songListState.push({
       songName: songName,
@@ -204,11 +153,20 @@ const Dashboard = () => {
       priority: undefined,
     });
   }
+  // ------------------------------------------------------------------
 
+  // State hooks -------------------------------------------
+  //performers corresponding to selected songs
+  const [selectedPerformers, setSelectedPerformers] = useState<Set<string>>(
+    new Set()
+  );
+  // to display availabilities per date
   const [possibleDays, setPossibleDays] = useState<Array<string>>([]);
 
+  // state for the songs
   const [songsList, setSongsList] =
     useState<Array<SongListElementState>>(songListState);
+  // ---------------------------------------------------------
 
   const handleCheck = (
     event: React.ChangeEvent<HTMLInputElement>,
@@ -239,8 +197,6 @@ const Dashboard = () => {
     );
   };
 
-  selectedPerformers;
-
   return (
     <div className="dashboard">
       <div className="song-section">
@@ -265,17 +221,9 @@ const Dashboard = () => {
             )}
           </div>
         ))}
-
-        {/* {songNames.map((songName) => (
-          <SongComponent song={songsData[songName]} />
-        ))} */}
       </div>
       <div className="available-dates-section">
         <h3>Journées possibles</h3>
-        {/* {[...selectedPerformers].map((item, index) => (
-          <p key={index}>{item}</p>
-        ))} */}
-
         {possibleDays.map((item) => (
           <p>{item}</p>
         ))}

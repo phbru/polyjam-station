@@ -1,0 +1,53 @@
+ //TEST
+  const time11: TimeInterval = {
+    start: new Time("19:00"),
+    end: new Time("19:15"),
+  };
+  const time12: TimeInterval = {
+    start: new Time("17:00"),
+    end: new Time("20:00"),
+  };
+  console.log("TESTT 1");
+  console.log(findTimeOverlap(time11, time12));
+
+  console.log("TESTT 2");
+  const time21: TimeInterval = {
+    start: new Time("18:00"),
+    end: new Time("20:00"),
+  };
+  const time22: TimeInterval = {
+    start: new Time("17:00"),
+    end: new Time("19:00"),
+  };
+  console.log(findTimeOverlap(time21, time22));
+  const songListState: Array<SongListElementState> = [];
+  const importedAvailabilities: Availabilities = availabilities;
+
+  console.log("TEST 3");
+  const intervalsA: Array<TimeInterval> = [
+    { start: new Time(15, 0), end: new Time(16, 0) },
+    { start: new Time(18, 0), end: new Time(19, 0) },
+  ];
+  const intervalsB: Array<TimeInterval> = [
+    { start: new Time(15, 30), end: new Time(18, 30) },
+    { start: new Time(18, 45), end: new Time(22, 0) },
+  ];
+  const intervalsC: Array<TimeInterval> = [
+    { start: new Time(15, 0), end: new Time(17, 30) },
+    { start: new Time(18, 30), end: new Time(19, 0) },
+  ];
+  console.log(findTimeOverlapBetweenTwoGroups(intervalsA, intervalsB));
+  console.log("values: ", Object.keys(importedAvailabilities["2023-09-01"]));
+  console.log("allAvailabilities", allAvailabilities);
+  console.log(
+    'importedAvailabilities["2023-09-01"]: ',
+    importedAvailabilities["2023-09-01"]
+  );
+
+  console.log("TEST 4");
+
+  console.log(findCumulativeOverlap([intervalsA, intervalsB, intervalsC]));
+
+
+
+  console.log("TEST 5");
