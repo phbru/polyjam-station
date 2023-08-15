@@ -126,22 +126,6 @@ const Dashboard = () => {
   // availabilities :
   const importedAvailabilities: Availabilities = availabilities;
   const allAvailabilities: Array<Array<TimeInterval>> = [];
-  // for (const person of selectedPerformers) {
-  //   const availabilitiesTimeFormat: Array<TimeInterval> = [];
-  //   for (const timeIntervalString of importedAvailabilities["2023-09-01"][
-  //     person
-  //   ]) {
-  //     availabilitiesTimeFormat.push({
-  //       start: new Time(timeIntervalString.start),
-  //       end: new Time(timeIntervalString.end),
-  //     });
-  //   }
-
-  //   allAvailabilities.push(availabilitiesTimeFormat);
-  // }
-
-  // const cumulativeOveral = findCumulativeOverlap(allAvailabilities);
-  // console.log(cumulativeOveral);
 
   // songs :
   const songListState: Array<SongListElementState> = [];
@@ -161,7 +145,9 @@ const Dashboard = () => {
     new Set()
   );
   // to display availabilities per date
-  const [possibleDays, setPossibleDays] = useState<Array<string>>([]);
+  const [possibleIntervalsEachDay, setPossibleIntervalsEachDay] = useState<
+    Array<[string, Array<TimeInterval>]>
+  >([]);
 
   // state for the songs
   const [songsList, setSongsList] =
@@ -224,8 +210,9 @@ const Dashboard = () => {
       </div>
       <div className="available-dates-section">
         <h3>Journées possibles</h3>
-        {possibleDays.map((item) => (
-          <p>{item}</p>
+        {possibleIntervalsEachDay.map((item) => (
+          <h4>{item[0]}</h4>
+          // {item[1] === undefined}
         ))}
       </div>
     </div>
