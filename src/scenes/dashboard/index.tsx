@@ -10,7 +10,8 @@ import {
   findCumulativeOverlap,
   findPossibleIntervals,
 } from "./helperFunctions";
-import { Availability } from "../../interfaces/Availability";
+import DailyPossibilitiesSection from "../../components/PossibleIntervalsSection";
+import SongSection from "../../components/SongSection";
 
 const Dashboard = () => {
   // Data  -----------------------------------------------------
@@ -85,46 +86,10 @@ const Dashboard = () => {
     selectedPerformers
   );
 
-  console.log(possibleIntervals);
-
   return (
     <div className="dashboard">
-      <div className="song-section">
-        {songsList.map((song, index) => (
-          <div className="song-component" key={index}>
-            <h4 className="song-component__name">
-              {song.songName}
-              <Checkbox
-                checked={song.checked}
-                onChange={(event) => handleCheck(event, index)}
-              />
-            </h4>
-            {Object.entries(song.content.performers).map(
-              ([instrument, performer]) => (
-                <ul key={instrument}>
-                  <li>
-                    <strong>{instrument} :</strong>
-                    {performer}
-                  </li>
-                </ul>
-              )
-            )}
-          </div>
-        ))}
-      </div>
-      <div className="available-dates-section">
-        <h3>Journées possibles</h3>
-        {possibleIntervals.map((item) => (
-          <div>
-            <h4>{item[0]}</h4>
-            {item[1]?.map((x, subIndex) => (
-              <p key={subIndex}>
-                [{x.start.toString()} , {x.end.toString()}]
-              </p>
-            ))}
-          </div>
-        ))}
-      </div>
+      <SongSection songsList={songsList} handleCheck={handleCheck} />
+      <DailyPossibilitiesSection possibleIntervals={possibleIntervals} />
     </div>
   );
 };
