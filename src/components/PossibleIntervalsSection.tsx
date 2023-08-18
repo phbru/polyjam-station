@@ -1,12 +1,13 @@
-import { TimeInterval } from "../interfaces/TimeInterval";
+import { useContext } from "react";
 
-interface DailyPossibilitiesProps {
-  possibleIntervals: Array<[string, null | Array<TimeInterval>]>;
-}
+import {
+  DashboardContext,
+  DashboardContextProps,
+} from "../contexts/dashboardContext";
 
-const DailyPossibilitiesSection: React.FC<DailyPossibilitiesProps> = ({
-  possibleIntervals,
-}) => {
+const DailyPossibilitiesSection = () => {
+  const { possibleIntervals } =
+    useContext<DashboardContextProps>(DashboardContext);
   return (
     <div className="available-dates-section">
       <h3>Journées possibles</h3>

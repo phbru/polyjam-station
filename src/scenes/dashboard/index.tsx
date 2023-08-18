@@ -62,7 +62,7 @@ const Dashboard = () => {
     >
       <div className="dashboard">
         <SongSection />
-        <DailyPossibilitiesSection possibleIntervals={possibleIntervals} />
+        <DailyPossibilitiesSection />
       </div>
     </DashboardContext.Provider>
   );
