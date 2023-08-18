@@ -36,8 +36,8 @@ const Dashboard = () => {
     convertAvailabilities(availabilities);
   console.log(convertedAvailabilities);
 
-  useContext<DashboardContextProps | undefined>(DashboardContext);
   /////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  useContext<DashboardContextProps>(DashboardContext);
   const [songList, setSongList] =
     useState<SongListElementState[]>(songListState);
   const [selectedPerformers, setSelectedPerformers] = useState<Set<string>>(
@@ -48,38 +48,6 @@ const Dashboard = () => {
   >(findPossibleIntervals(convertedAvailabilities, selectedPerformers));
 
   //////////////////////////////////////////////////////////////////////////
-
-  const handleCheck = (
-    event: React.ChangeEvent<HTMLInputElement>,
-    songIndex: number
-  ) => {
-    const updatedSelectedPerformers = new Set(selectedPerformers);
-    const updatedSongs = [...songList];
-
-    updatedSongs[songIndex].checked = event.target.checked;
-    setSongList(updatedSongs);
-
-    for (const performer of Object.values(
-      songList[songIndex].content.performers
-    )) {
-      if (event.target.checked) {
-        updatedSelectedPerformers.add(performer);
-      } else {
-        updatedSelectedPerformers.delete(performer);
-      }
-    }
-    setSelectedPerformers(updatedSelectedPerformers);
-
-    const updatedPossibleIntervals = findPossibleIntervals(
-      convertedAvailabilities,
-      updatedSelectedPerformers
-    );
-    setPossibleIntervals(updatedPossibleIntervals);
-
-    console.log(updatedSongs);
-    console.log(updatedSelectedPerformers);
-    console.log(updatedPossibleIntervals);
-  };
 
   return (
     <DashboardContext.Provider
@@ -93,7 +61,7 @@ const Dashboard = () => {
       }}
     >
       <div className="dashboard">
-        <SongSection songList={songList} handleCheck={handleCheck} />
+        <SongSection songList={songList} />
         <DailyPossibilitiesSection possibleIntervals={possibleIntervals} />
       </div>
     </DashboardContext.Provider>

@@ -1,14 +1,66 @@
 import Checkbox from "@mui/material/Checkbox";
 import { SongListElementState } from "../interfaces/SongListElementState";
+import {
+  DashboardContext,
+  DashboardContextProps,
+} from "../contexts/dashboardContext";
+import { useContext } from "react";
+import {
+  convertAvailabilities,
+  findPossibleIntervals,
+} from "../scenes/dashboard/helperFunctions";
+import { Availabilities } from "../interfaces/Availabilities";
+import { availabilities } from "../data/availabilitiesData";
 interface SongListProps {
   songList: Array<SongListElementState>;
-  handleCheck: (
-    event: React.ChangeEvent<HTMLInputElement>,
-    songIndex: number
-  ) => void;
 }
 
-const SongSection: React.FC<SongListProps> = ({ songList, handleCheck }) => {
+const SongSection: React.FC<SongListProps> = () => {
+  const convertedAvailabilities: Availabilities =
+    convertAvailabilities(availabilities);
+  console.log(convertedAvailabilities);
+
+  const {
+    songList,
+    setSongList,
+    possibleIntervals,
+    setPossibleIntervals,
+    selectedPerformers,
+    setSelectedPerformers,
+  } = useContext<DashboardContextProps>(DashboardContext);
+
+  const handleCheck = (
+    event: React.ChangeEvent<HTMLInputElement>,
+    songIndex: number
+  ) => {
+    const updatedSelectedPerformers = new Set(selectedPerformers);
+    const updatedSongs = [...songList];
+
+    updatedSongs[songIndex].checked = event.target.checked;
+    setSongList(updatedSongs);
+
+    for (const performer of Object.values(
+      songList[songIndex].content.performers
+    )) {
+      if (event.target.checked) {
+        updatedSelectedPerformers.add(performer);
+      } else {
+        updatedSelectedPerformers.delete(performer);
+      }
+    }
+    setSelectedPerformers(updatedSelectedPerformers);
+
+    const updatedPossibleIntervals = findPossibleIntervals(
+      convertedAvailabilities,
+      updatedSelectedPerformers
+    );
+    setPossibleIntervals(updatedPossibleIntervals);
+
+    console.log(updatedSongs);
+    console.log(updatedSelectedPerformers);
+    console.log(updatedPossibleIntervals);
+  };
+
   return (
     <div className="song-section">
       {songList.map((song, index) => (

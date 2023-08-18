@@ -26,6 +26,11 @@ export interface DashboardContextProps {
   setSelectedPerformers: React.Dispatch<React.SetStateAction<Set<string>>>;
 }
 
-export const DashboardContext = createContext<
-  DashboardContextProps | undefined
->(undefined);
+export const DashboardContext = createContext<DashboardContextProps>({
+  songList: [],
+  setSongList: () => {},
+  possibleIntervals: [],
+  setPossibleIntervals: () => {},
+  selectedPerformers: new Set(),
+  setSelectedPerformers: () => {},
+});
