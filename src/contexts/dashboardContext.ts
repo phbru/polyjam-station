@@ -1,10 +1,12 @@
 import { createContext } from "react";
-import { SongListElementState } from "../interfaces/SongListElementState";
+import { CheckableSongListElementState } from "../interfaces/CheckableSongListElementState";
 import { TimeInterval } from "../interfaces/TimeInterval";
 
 export interface DashboardContextProps {
-  songList: Array<SongListElementState>;
-  setSongList: React.Dispatch<React.SetStateAction<SongListElementState[]>>;
+  checkableCheckableSongList: Array<CheckableSongListElementState>;
+  setCheckableSongList: React.Dispatch<
+    React.SetStateAction<CheckableSongListElementState[]>
+  >;
   possibleIntervals: Array<[string, null | Array<TimeInterval>]>;
   setPossibleIntervals: React.Dispatch<
     React.SetStateAction<Array<[string, null | Array<TimeInterval>]>>
@@ -14,8 +16,8 @@ export interface DashboardContextProps {
 }
 
 export const DashboardContext = createContext<DashboardContextProps>({
-  songList: [],
-  setSongList: () => {},
+  checkableCheckableSongList: [],
+  setCheckableSongList: () => {},
   possibleIntervals: [],
   setPossibleIntervals: () => {},
   selectedPerformers: new Set(),

@@ -20,7 +20,7 @@
     end: new Time("19:00"),
   };
   console.log(findTimeOverlap(time21, time22));
-  const songListState: Array<SongListElementState> = [];
+  const songListState: Array<CheckableSongListElementState> = [];
   const importedAvailabilities: Availabilities = availabilities;
 
   console.log("TEST 3");
