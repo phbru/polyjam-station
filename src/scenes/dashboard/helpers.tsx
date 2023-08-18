@@ -3,8 +3,9 @@ import { Availabilities } from "../../interfaces/Availabilities";
 import { Availability } from "../../interfaces/Availability";
 
 import { TimeInterval } from "../../interfaces/TimeInterval";
+import { DailyPossibleInterval } from "../../types/DailyPossibleInterval";
 
-function findTimeOverlap(
+function findOverlapBetweenTwoIntervals(
   interval1: TimeInterval,
   interval2: TimeInterval
 ): TimeInterval | null {
@@ -25,7 +26,7 @@ function findTimeOverlap(
   return { start: overlapStart, end: overlapEnd };
 }
 
-function findTimeOverlapBetweenTwoGroups(
+function findOverlapBetweenTwoIntervalGroups(
   intervalGroup1: Array<TimeInterval>,
   intervalGroup2: Array<TimeInterval>
 ): null | Array<TimeInterval> {
@@ -33,7 +34,7 @@ function findTimeOverlapBetweenTwoGroups(
 
   for (const interval1 of intervalGroup1) {
     for (const interval2 of intervalGroup2) {
-      const overlap = findTimeOverlap(interval1, interval2);
+      const overlap = findOverlapBetweenTwoIntervals(interval1, interval2);
       if (overlap) {
         overlapIntervals.push(overlap);
       }
@@ -54,7 +55,7 @@ export function findCumulativeOverlap(
   ];
 
   for (const availability of availabilities) {
-    const overlapGroups = findTimeOverlapBetweenTwoGroups(
+    const overlapGroups = findOverlapBetweenTwoIntervalGroups(
       cumulativeOverlap,
       availability
     );
@@ -111,18 +112,18 @@ export const getAvailabilitiesFor = (
 export const findPossibleIntervals = (
   convertedAvailabilities: Availabilities,
   selectedMusicians: Set<string>
-): Array<[string, null | Array<TimeInterval>]> => {
-  const possibleIntervals: Array<[string, null | Array<TimeInterval>]> = [];
+): Array<DailyPossibleInterval> => {
+  const dailyPossibleIntervals: Array<DailyPossibleInterval> = [];
   for (const date in convertedAvailabilities) {
     const selectedMusiciansAvailability: Availability = getAvailabilitiesFor(
       selectedMusicians,
       convertedAvailabilities[date]
     );
 
-    possibleIntervals.push([
+    dailyPossibleIntervals.push([
       date,
       findCumulativeOverlap(Object.values(selectedMusiciansAvailability)),
     ]);
   }
-  return possibleIntervals;
+  return dailyPossibleIntervals;
 };

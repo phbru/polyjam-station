@@ -6,12 +6,12 @@ import {
 } from "../contexts/dashboardContext";
 
 const DailyPossibilitiesSection = () => {
-  const { possibleIntervals } =
+  const { dailyPossibleIntervals } =
     useContext<DashboardContextProps>(DashboardContext);
   return (
     <div className="available-dates-section">
       <h3>Journées possibles</h3>
-      {possibleIntervals.map((item) => (
+      {dailyPossibleIntervals.map((item) => (
         <div key={item[0]}>
           <h4>{item[0]}</h4>
           {item[1]?.map((x, subIndex) => (

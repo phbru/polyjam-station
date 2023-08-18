@@ -8,7 +8,7 @@
     end: new Time("20:00"),
   };
   console.log("TESTT 1");
-  console.log(findTimeOverlap(time11, time12));
+  console.log(findOverlapBetweenTwoIntervals(time11, time12));
 
   console.log("TESTT 2");
   const time21: TimeInterval = {
@@ -19,7 +19,7 @@
     start: new Time("17:00"),
     end: new Time("19:00"),
   };
-  console.log(findTimeOverlap(time21, time22));
+  console.log(findOverlapBetweenTwoIntervals(time21, time22));
   const songListState: Array<CheckableSong> = [];
   const importedAvailabilities: Availabilities = availabilities;
 
@@ -36,7 +36,7 @@
     { start: new Time(15, 0), end: new Time(17, 30) },
     { start: new Time(18, 30), end: new Time(19, 0) },
   ];
-  console.log(findTimeOverlapBetweenTwoGroups(intervalsA, intervalsB));
+  console.log(findOverlapBetweenTwoIntervalGroups(intervalsA, intervalsB));
   console.log("values: ", Object.keys(importedAvailabilities["2023-09-01"]));
   console.log("allAvailabilities", allAvailabilities);
   console.log(

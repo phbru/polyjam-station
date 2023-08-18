@@ -1,14 +1,15 @@
 import { useContext, useState } from "react";
 
-import DailyPossibilitiesSection from "../../components/PossibleIntervalsSection";
+import DailyPossibilitiesSection from "../../components/DailyPossibilitiesSection";
 import SongSection from "../../components/SongSection";
 import {
   DashboardContext,
   DashboardContextProps,
 } from "../../contexts/dashboardContext";
 import { CheckableSong } from "../../interfaces/CheckableSong";
-import { TimeInterval } from "../../interfaces/TimeInterval";
+
 import { initialPossibleIntervals, songListState } from "./initialStates";
+import { DailyPossibleInterval } from "../../types/DailyPossibleInterval";
 
 const Dashboard = () => {
   useContext<DashboardContextProps>(DashboardContext);
@@ -18,8 +19,8 @@ const Dashboard = () => {
   const [selectedMusicians, setSelectedMusicians] = useState<Set<string>>(
     new Set()
   );
-  const [possibleIntervals, setPossibleIntervals] = useState<
-    Array<[string, null | Array<TimeInterval>]>
+  const [dailyPossibleIntervals, setPossibleIntervals] = useState<
+    Array<DailyPossibleInterval>
   >(initialPossibleIntervals);
 
   return (
@@ -27,7 +28,7 @@ const Dashboard = () => {
       value={{
         checkableCheckableSongList: checkableCheckableSongList,
         setCheckableSongList,
-        possibleIntervals,
+        dailyPossibleIntervals,
         setPossibleIntervals,
         selectedMusicians,
         setSelectedMusicians,
