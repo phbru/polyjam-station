@@ -1,10 +1,6 @@
-import { availabilities } from "../../data/availabilitiesData";
 import { useContext, useState } from "react";
-import { Availabilities } from "../../interfaces/Availabilities";
-import {
-  convertAvailabilities,
-  findPossibleIntervals,
-} from "./helperFunctions";
+
+import { findPossibleIntervals } from "./helperFunctions";
 import DailyPossibilitiesSection from "../../components/PossibleIntervalsSection";
 import SongSection from "../../components/SongSection";
 import {
@@ -14,6 +10,7 @@ import {
 import { SongListElementState } from "../../interfaces/SongListElementState";
 import { songsData } from "../../data/songsData";
 import { TimeInterval } from "../../interfaces/TimeInterval";
+import { convertedAvailabilities } from "../../constants/convertedAvailabilities";
 
 const Dashboard = () => {
   const songListState: Array<SongListElementState> = [];
@@ -32,11 +29,6 @@ const Dashboard = () => {
     }
   }
 
-  const convertedAvailabilities: Availabilities =
-    convertAvailabilities(availabilities);
-  console.log(convertedAvailabilities);
-
-  /////////////////////////////////////////////////////////////////////////////////////////////////////////////
   useContext<DashboardContextProps>(DashboardContext);
   const [songList, setSongList] =
     useState<SongListElementState[]>(songListState);
@@ -46,8 +38,6 @@ const Dashboard = () => {
   const [possibleIntervals, setPossibleIntervals] = useState<
     Array<[string, null | Array<TimeInterval>]>
   >(findPossibleIntervals(convertedAvailabilities, selectedPerformers));
-
-  //////////////////////////////////////////////////////////////////////////
 
   return (
     <DashboardContext.Provider

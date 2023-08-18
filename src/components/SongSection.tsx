@@ -4,18 +4,10 @@ import {
   DashboardContextProps,
 } from "../contexts/dashboardContext";
 import { useContext } from "react";
-import {
-  convertAvailabilities,
-  findPossibleIntervals,
-} from "../scenes/dashboard/helperFunctions";
-import { Availabilities } from "../interfaces/Availabilities";
-import { availabilities } from "../data/availabilitiesData";
+import { findPossibleIntervals } from "../scenes/dashboard/helperFunctions";
+import { convertedAvailabilities } from "../constants/convertedAvailabilities";
 
 const SongSection = () => {
-  const convertedAvailabilities: Availabilities =
-    convertAvailabilities(availabilities);
-  console.log(convertedAvailabilities);
-
   const {
     songList,
     setSongList,
