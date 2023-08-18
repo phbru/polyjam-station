@@ -1,6 +1,6 @@
 import { Song } from "./Song";
 
-export interface CheckableSongListElementState {
+export interface CheckableSong {
   songName: string;
   checked: boolean;
   content: Song;

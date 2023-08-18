@@ -6,7 +6,7 @@ import {
   DashboardContext,
   DashboardContextProps,
 } from "../../contexts/dashboardContext";
-import { CheckableSongListElementState } from "../../interfaces/CheckableSongListElementState";
+import { CheckableSong } from "../../interfaces/CheckableSong";
 import { TimeInterval } from "../../interfaces/TimeInterval";
 import { initialPossibleIntervals, songListState } from "./initialStates";
 
@@ -14,7 +14,7 @@ const Dashboard = () => {
   useContext<DashboardContextProps>(DashboardContext);
 
   const [checkableCheckableSongList, setCheckableSongList] =
-    useState<CheckableSongListElementState[]>(songListState);
+    useState<CheckableSong[]>(songListState);
   const [selectedPerformers, setSelectedPerformers] = useState<Set<string>>(
     new Set()
   );

@@ -1,9 +1,9 @@
 import { convertedAvailabilities } from "../../constants/convertedAvailabilities";
 import { songsData } from "../../data/songsData";
-import { CheckableSongListElementState } from "../../interfaces/CheckableSongListElementState";
+import { CheckableSong } from "../../interfaces/CheckableSong";
 import { findPossibleIntervals } from "./helpers";
 
-export const songListState: Array<CheckableSongListElementState> = [];
+export const songListState: Array<CheckableSong> = [];
 export const allMusicians: Set<string> = new Set();
 export const initialPossibleIntervals = findPossibleIntervals(
   convertedAvailabilities,
