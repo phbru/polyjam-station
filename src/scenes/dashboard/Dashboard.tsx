@@ -14,8 +14,8 @@ const Dashboard = () => {
   useContext<DashboardContextProps>(DashboardContext);
 
   const [checkableCheckableSongList, setCheckableSongList] =
-    useState<CheckableSong[]>(songListState);
-  const [selectedPerformers, setSelectedPerformers] = useState<Set<string>>(
+    useState<Array<CheckableSong>>(songListState);
+  const [selectedMusicians, setSelectedMusicians] = useState<Set<string>>(
     new Set()
   );
   const [possibleIntervals, setPossibleIntervals] = useState<
@@ -29,8 +29,8 @@ const Dashboard = () => {
         setCheckableSongList,
         possibleIntervals,
         setPossibleIntervals,
-        selectedPerformers,
-        setSelectedPerformers,
+        selectedMusicians,
+        setSelectedMusicians,
       }}
     >
       <div className="dashboard">

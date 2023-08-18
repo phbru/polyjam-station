@@ -18,7 +18,7 @@ for (const [songName, songContent] of Object.entries(songsData)) {
     priority: undefined,
   });
 
-  for (const musician of Object.values(songContent.performers)) {
+  for (const musician of Object.values(songContent.musicians)) {
     allMusicians.add(musician);
   }
 }

@@ -15,11 +15,11 @@
 //       <h4 className="song-component__name">
 //         {props.song.name} <Checkbox checked={checked} onChange={handleChange} />
 //       </h4>
-//       {Object.entries(props.song.performers).map(([instrument, performer]) => (
+//       {Object.entries(props.song.musicians).map(([instrument, musician]) => (
 //         <ul key={instrument}>
 //           <li>
 //             <strong>{instrument} :</strong>
-//             {performer}
+//             {musician}
 //           </li>
 //         </ul>
 //       ))}

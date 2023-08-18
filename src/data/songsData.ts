@@ -3,7 +3,7 @@ import { SongData } from "../interfaces/SongData";
 export const songsData: SongData = {
   "Bad Romance": {
     name: "Bad Romance",
-    performers: {
+    musicians: {
       Sing1: "Mona",
       Sing2: "Rivs",
       Sing3: "Pierre",
@@ -17,7 +17,7 @@ export const songsData: SongData = {
   },
   "Bennie and The Jets": {
     name: "Bennie and The Jets",
-    performers: {
+    musicians: {
       Sing1: "Mélissa",
       Sing2: "Rivs",
       Guit1: "Valentin",
@@ -31,7 +31,7 @@ export const songsData: SongData = {
   },
   "Blinding Lights (With added guitar)": {
     name: "Blinding Lights (With added guitar)",
-    performers: {
+    musicians: {
       Sing1: "Milla",
       Sing2: "Mélissa",
       Guit1: "Sebastien",

@@ -9,8 +9,8 @@ export interface DashboardContextProps {
   setPossibleIntervals: React.Dispatch<
     React.SetStateAction<Array<[string, null | Array<TimeInterval>]>>
   >;
-  selectedPerformers: Set<string>;
-  setSelectedPerformers: React.Dispatch<React.SetStateAction<Set<string>>>;
+  selectedMusicians: Set<string>;
+  setSelectedMusicians: React.Dispatch<React.SetStateAction<Set<string>>>;
 }
 
 export const DashboardContext = createContext<DashboardContextProps>({
@@ -18,6 +18,6 @@ export const DashboardContext = createContext<DashboardContextProps>({
   setCheckableSongList: () => {},
   possibleIntervals: [],
   setPossibleIntervals: () => {},
-  selectedPerformers: new Set(),
-  setSelectedPerformers: () => {},
+  selectedMusicians: new Set(),
+  setSelectedMusicians: () => {},
 });

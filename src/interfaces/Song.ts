@@ -1,6 +1,6 @@
-import { PerformersDetails } from "./PerformersDetails";
+import { MusiciansDetails } from "./MusiciansDetails";
 
 export interface Song {
   name: string;
-  performers: PerformersDetails;
+  musicians: MusiciansDetails;
 }

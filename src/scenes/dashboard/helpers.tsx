@@ -110,12 +110,12 @@ export const getAvailabilitiesFor = (
 
 export const findPossibleIntervals = (
   convertedAvailabilities: Availabilities,
-  selectedPerformers: Set<string>
+  selectedMusicians: Set<string>
 ): Array<[string, null | Array<TimeInterval>]> => {
   const possibleIntervals: Array<[string, null | Array<TimeInterval>]> = [];
   for (const date in convertedAvailabilities) {
     const selectedMusiciansAvailability: Availability = getAvailabilitiesFor(
-      selectedPerformers,
+      selectedMusicians,
       convertedAvailabilities[date]
     );
 

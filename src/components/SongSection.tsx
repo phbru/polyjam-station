@@ -12,39 +12,39 @@ const SongSection = () => {
     checkableCheckableSongList,
     setCheckableSongList,
     setPossibleIntervals,
-    selectedPerformers,
-    setSelectedPerformers,
+    selectedMusicians,
+    setSelectedMusicians,
   } = useContext<DashboardContextProps>(DashboardContext);
 
   const handleCheck = (
     event: React.ChangeEvent<HTMLInputElement>,
     songIndex: number
   ) => {
-    const updatedSelectedPerformers = new Set(selectedPerformers);
+    const updatedSelectedMusicians = new Set(selectedMusicians);
     const updatedSongs = [...checkableCheckableSongList];
 
     updatedSongs[songIndex].checked = event.target.checked;
     setCheckableSongList(updatedSongs);
 
-    for (const performer of Object.values(
-      checkableCheckableSongList[songIndex].content.performers
+    for (const musician of Object.values(
+      checkableCheckableSongList[songIndex].content.musicians
     )) {
       if (event.target.checked) {
-        updatedSelectedPerformers.add(performer);
+        updatedSelectedMusicians.add(musician);
       } else {
-        updatedSelectedPerformers.delete(performer);
+        updatedSelectedMusicians.delete(musician);
       }
     }
-    setSelectedPerformers(updatedSelectedPerformers);
+    setSelectedMusicians(updatedSelectedMusicians);
 
     const updatedPossibleIntervals = findPossibleIntervals(
       convertedAvailabilities,
-      updatedSelectedPerformers
+      updatedSelectedMusicians
     );
     setPossibleIntervals(updatedPossibleIntervals);
 
     console.log(updatedSongs);
-    console.log(updatedSelectedPerformers);
+    console.log(updatedSelectedMusicians);
     console.log(updatedPossibleIntervals);
   };
 
@@ -59,12 +59,12 @@ const SongSection = () => {
               onChange={(event) => handleCheck(event, index)}
             />
           </h4>
-          {Object.entries(song.content.performers).map(
-            ([instrument, performer]) => (
+          {Object.entries(song.content.musicians).map(
+            ([instrument, musician]) => (
               <ul key={instrument}>
                 <li>
                   <strong>{instrument} :</strong>
-                  {performer}
+                  {musician}
                 </li>
               </ul>
             )
