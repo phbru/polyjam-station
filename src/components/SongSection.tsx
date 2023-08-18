@@ -23,7 +23,6 @@ const SongSection: React.FC<SongListProps> = () => {
   const {
     songList,
     setSongList,
-    possibleIntervals,
     setPossibleIntervals,
     selectedPerformers,
     setSelectedPerformers,
