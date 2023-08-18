@@ -4,7 +4,7 @@ import {
   DashboardContextProps,
 } from "../contexts/dashboardContext";
 import { useContext } from "react";
-import { findPossibleIntervals } from "../scenes/dashboard/helperFunctions";
+import { findPossibleIntervals } from "../scenes/dashboard/helpers";
 import { convertedAvailabilities } from "../constants/convertedAvailabilities";
 
 const SongSection = () => {

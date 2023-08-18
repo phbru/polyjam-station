@@ -1,7 +1,7 @@
 import { Time } from "../../classes/Time";
 import { Availabilities } from "../../interfaces/Availabilities";
 import { Availability } from "../../interfaces/Availability";
-import { AvailabilityData } from "../../interfaces/AvailabilityData";
+
 import { TimeInterval } from "../../interfaces/TimeInterval";
 
 function findTimeOverlap(

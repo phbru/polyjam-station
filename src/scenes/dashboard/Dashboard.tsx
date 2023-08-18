@@ -1,6 +1,6 @@
 import { useContext, useState } from "react";
 
-import { findPossibleIntervals } from "./helperFunctions";
+import { findPossibleIntervals } from "./helpers";
 import DailyPossibilitiesSection from "../../components/PossibleIntervalsSection";
 import SongSection from "../../components/SongSection";
 import {
