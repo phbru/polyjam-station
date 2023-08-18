@@ -1,19 +1,6 @@
 import { createContext } from "react";
-
 import { SongListElementState } from "../interfaces/SongListElementState";
-import { songsData } from "../data/songsData";
 import { TimeInterval } from "../interfaces/TimeInterval";
-import { Availabilities } from "../interfaces/Availabilities";
-import {
-  convertAvailabilities,
-  findPossibleIntervals,
-} from "../scenes/dashboard/helperFunctions";
-import { availabilities } from "../data/availabilitiesData";
-
-// Data  -----------------------------------------------------
-// availabilities :
-
-// songs :
 
 export interface DashboardContextProps {
   songList: Array<SongListElementState>;

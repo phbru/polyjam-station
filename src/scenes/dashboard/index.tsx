@@ -61,7 +61,7 @@ const Dashboard = () => {
       }}
     >
       <div className="dashboard">
-        <SongSection songList={songList} />
+        <SongSection />
         <DailyPossibilitiesSection possibleIntervals={possibleIntervals} />
       </div>
     </DashboardContext.Provider>

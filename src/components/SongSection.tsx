@@ -1,5 +1,4 @@
 import Checkbox from "@mui/material/Checkbox";
-import { SongListElementState } from "../interfaces/SongListElementState";
 import {
   DashboardContext,
   DashboardContextProps,
@@ -11,11 +10,8 @@ import {
 } from "../scenes/dashboard/helperFunctions";
 import { Availabilities } from "../interfaces/Availabilities";
 import { availabilities } from "../data/availabilitiesData";
-interface SongListProps {
-  songList: Array<SongListElementState>;
-}
 
-const SongSection: React.FC<SongListProps> = () => {
+const SongSection = () => {
   const convertedAvailabilities: Availabilities =
     convertAvailabilities(availabilities);
   console.log(convertedAvailabilities);
