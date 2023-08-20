@@ -50,17 +50,20 @@ ul li {
 /* Dashboard style */
 .dashboard {
   display: flex;
+  position: relative;
 }
 .time-slots-for-every-date-section {
   display: flex;
-
   padding: 1rem 1rem 1rem 1rem;
 }
 
 .dashboard__separator {
-  position: fixed;
-  left: 50%;
+  border-right: solid;
   border-right-width: 0.5rem;
+
+  position: fixed;
+  height: 100vh;
+  left: 50vw;
 }
 
 .checkable-songs-column {
