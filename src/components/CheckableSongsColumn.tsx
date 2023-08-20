@@ -7,7 +7,7 @@ import { useContext } from "react";
 import { findPossibleIntervals } from "../scenes/dashboard/helpers";
 import { convertedAvailabilities } from "../constants/convertedAvailabilities";
 
-const SongSection = () => {
+const CheckableSongsColumn = () => {
   const {
     checkableCheckableSongList,
     setCheckableSongList,
@@ -49,7 +49,7 @@ const SongSection = () => {
   };
 
   return (
-    <div className="song-section">
+    <div className="checkable-songs-column">
       {checkableCheckableSongList.map((song, index) => (
         <div className="song-component" key={index}>
           <h4 className="song-component__name">
@@ -75,4 +75,4 @@ const SongSection = () => {
   );
 };
 
-export default SongSection;
+export default CheckableSongsColumn;

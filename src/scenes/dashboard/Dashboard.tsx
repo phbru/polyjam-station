@@ -1,6 +1,5 @@
 import { useContext, useState } from "react";
-import DailyPossibilitiesSection from "../../components/DailyPossibilitiesSection";
-import SongSection from "../../components/SongSection";
+
 import {
   DashboardContext,
   DashboardContextProps,
@@ -9,6 +8,7 @@ import { CheckableSong } from "../../interfaces/CheckableSong";
 
 import { initialPossibleIntervals, songListState } from "./initialStates";
 import { DailyPossibleInterval } from "../../types/DailyPossibleInterval";
+import TimeSlotsForEveryDatesSection from "../../components/TimeSlotsForEveryDateSection";
 
 const Dashboard = () => {
   useContext<DashboardContextProps>(DashboardContext);
@@ -34,8 +34,8 @@ const Dashboard = () => {
       }}
     >
       <div className="dashboard">
-        <SongSection />
-        <DailyPossibilitiesSection />
+        <TimeSlotsForEveryDatesSection />
+        <div className="dashboard__separator"></div>
       </div>
     </DashboardContext.Provider>
   );

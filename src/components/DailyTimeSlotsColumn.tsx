@@ -5,11 +5,11 @@ import {
   DashboardContextProps,
 } from "../contexts/dashboardContext";
 
-const DailyPossibilitiesSection = () => {
+const DailyTimeSlotsColumn = () => {
   const { dailyPossibleIntervals } =
     useContext<DashboardContextProps>(DashboardContext);
   return (
-    <div className="available-dates-section">
+    <div className="daily-time-slots-column">
       <h3>Journées possibles</h3>
       {dailyPossibleIntervals.map((item) => (
         <div key={item[0]}>
@@ -25,4 +25,4 @@ const DailyPossibilitiesSection = () => {
   );
 };
 
-export default DailyPossibilitiesSection;
+export default DailyTimeSlotsColumn;

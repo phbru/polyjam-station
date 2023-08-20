@@ -51,16 +51,25 @@ ul li {
 .dashboard {
   display: flex;
 }
-.song-section {
-  border-right: solid;
-  width: 12rem;
-}
-.available-dates-section {
+.time-slots-for-every-date-section {
+  display: flex;
+
+  padding: 1rem 1rem 1rem 1rem;
 }
 
-/* Song component style */
-.song-component {
-  margin-top: 1rem;
+.dashboard__separator {
+  position: fixed;
+  left: 50%;
+  border-right-width: 0.5rem;
+}
+
+.checkable-songs-column {
+  border-right: solid #555;
+  width: 12rem;
+}
+
+.daily-time-slots-column {
+  padding: 0 1rem 0 3rem;
 }
 
 .song-component__name {
