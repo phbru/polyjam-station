@@ -1,13 +1,13 @@
 import { useContext } from "react";
 
 import {
-  DashboardContext,
-  DashboardContextProps,
-} from "../contexts/dashboardContext";
+  TimeSlotsForEveryDateContext,
+  TimeSlotsForEveryDateContextProps,
+} from "../contexts/TimeSlotsForEveryDateContext";
 
 const DailyTimeSlotsColumn = () => {
   const { dailyPossibleIntervals } =
-    useContext<DashboardContextProps>(DashboardContext);
+    useContext<TimeSlotsForEveryDateContextProps>(TimeSlotsForEveryDateContext);
   return (
     <div className="daily-time-slots-column">
       <h3>Journées possibles</h3>

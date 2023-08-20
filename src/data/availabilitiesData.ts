@@ -24,7 +24,7 @@ export const availabilities = {
     Dukes: [{ start: "17:00", end: "22:00" }],
   },
   "2023-09-02": {
-    Mona: [{ start: "17:00", end: "22:00" }],
+    Mona: [],
     Rivs: [],
     Pierre: [{ start: "17:00", end: "22:00" }],
     Valentin: [{ start: "17:00", end: "22:00" }],

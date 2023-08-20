@@ -2,7 +2,7 @@ import { createContext } from "react";
 import { CheckableSong } from "../interfaces/CheckableSong";
 import { DailyPossibleInterval } from "../types/DailyPossibleInterval";
 
-export interface DashboardContextProps {
+export interface TimeSlotsForEveryDateContextProps {
   checkableCheckableSongList: Array<CheckableSong>;
   setCheckableSongList: React.Dispatch<React.SetStateAction<CheckableSong[]>>;
   dailyPossibleIntervals: Array<DailyPossibleInterval>;
@@ -13,11 +13,12 @@ export interface DashboardContextProps {
   setSelectedMusicians: React.Dispatch<React.SetStateAction<Set<string>>>;
 }
 
-export const DashboardContext = createContext<DashboardContextProps>({
-  checkableCheckableSongList: [],
-  setCheckableSongList: () => {},
-  dailyPossibleIntervals: [],
-  setPossibleIntervals: () => {},
-  selectedMusicians: new Set(),
-  setSelectedMusicians: () => {},
-});
+export const TimeSlotsForEveryDateContext =
+  createContext<TimeSlotsForEveryDateContextProps>({
+    checkableCheckableSongList: [],
+    setCheckableSongList: () => {},
+    dailyPossibleIntervals: [],
+    setPossibleIntervals: () => {},
+    selectedMusicians: new Set(),
+    setSelectedMusicians: () => {},
+  });

@@ -1,8 +1,8 @@
 import Checkbox from "@mui/material/Checkbox";
 import {
-  DashboardContext,
-  DashboardContextProps,
-} from "../contexts/dashboardContext";
+  TimeSlotsForEveryDateContext,
+  TimeSlotsForEveryDateContextProps,
+} from "../contexts/TimeSlotsForEveryDateContext";
 import { useContext } from "react";
 import { findPossibleIntervals } from "../scenes/dashboard/helpers";
 import { convertedAvailabilities } from "../constants/convertedAvailabilities";
@@ -14,7 +14,9 @@ const CheckableSongsColumn = () => {
     setPossibleIntervals,
     selectedMusicians,
     setSelectedMusicians,
-  } = useContext<DashboardContextProps>(DashboardContext);
+  } = useContext<TimeSlotsForEveryDateContextProps>(
+    TimeSlotsForEveryDateContext
+  );
 
   const handleCheck = (
     event: React.ChangeEvent<HTMLInputElement>,
