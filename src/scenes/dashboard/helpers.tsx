@@ -72,6 +72,7 @@ export const convertToTime = (timeString: string): Time => {
   return new Time(timeString);
 };
 
+// The provided data have time as string. The converted version has it as Time
 export const convertAvailabilities = (data: any): Availabilities => {
   const availabilityData: Availabilities = {};
 

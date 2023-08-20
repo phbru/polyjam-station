@@ -1,5 +1,4 @@
 import { useContext, useState } from "react";
-
 import DailyPossibilitiesSection from "../../components/DailyPossibilitiesSection";
 import SongSection from "../../components/SongSection";
 import {
