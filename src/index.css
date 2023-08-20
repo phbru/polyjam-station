@@ -50,20 +50,16 @@ ul li {
 /* Dashboard style */
 .dashboard {
   display: flex;
-  position: relative;
+  width: 100%;
 }
 .time-slots-for-every-date-section {
   display: flex;
+
+  width: 50%;
   padding: 1rem 1rem 1rem 1rem;
-}
 
-.dashboard__separator {
   border-right: solid;
-  border-right-width: 0.5rem;
-
-  position: fixed;
-  height: 100vh;
-  left: 50vw;
+  border-right-width: 0.25rem;
 }
 
 .checkable-songs-column {
@@ -77,4 +73,13 @@ ul li {
 
 .song-component__name {
   margin: 0;
+}
+
+.songs-for-a-date-section {
+  display: flex;
+  flex-direction: column;
+
+  padding: 1rem 1rem 1rem 1rem;
+  border-left: solid;
+  border-left-width: 0.25rem;
 }

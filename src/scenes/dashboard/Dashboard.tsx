@@ -9,6 +9,7 @@ import { CheckableSong } from "../../interfaces/CheckableSong";
 import { initialPossibleIntervals, songListState } from "./initialStates";
 import { DailyPossibleInterval } from "../../types/DailyPossibleInterval";
 import TimeSlotsForEveryDatesSection from "../../components/TimeSlotsForEveryDateSection";
+import SongsForADateSection from "../../components/SongsForADateSection";
 
 const Dashboard = () => {
   useContext<DashboardContextProps>(DashboardContext);
@@ -35,7 +36,7 @@ const Dashboard = () => {
     >
       <div className="dashboard">
         <TimeSlotsForEveryDatesSection />
-        <div className="dashboard__separator"></div>
+        <SongsForADateSection />
       </div>
     </DashboardContext.Provider>
   );
