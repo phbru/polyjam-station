@@ -1,42 +1,15 @@
-import { useState } from "react";
-import { songsData } from "../data/songsData";
+import { useContext } from "react";
 
-import { convertedAvailabilities } from "../constants/convertedAvailabilities";
-import { findPossibleIntervals } from "../scenes/dashboard/helpers";
-import { DailyPossibleInterval } from "../types/DailyPossibleInterval";
 import { TimeInterval } from "../interfaces/TimeInterval";
 import { SongForDate } from "../interfaces/SongForDate";
+import {
+  SongsForPickedDateContext,
+  SongsForPickedDateContextProps,
+} from "../contexts/SongsForPickedDateContext";
 
 const SongsForPickedDateBox = () => {
-  const [selectedDate, setSelectedDate] = useState<string>("2023-09-01");
-
-  const updatedPossibleSongsForDate: SongForDate[] = [];
-
-  for (const song in songsData) {
-    const musicianSet = new Set(Object.values(songsData[song].musicians));
-
-    const songTimeSlots: DailyPossibleInterval[] = findPossibleIntervals(
-      { "2023-09-01": convertedAvailabilities[selectedDate] },
-      musicianSet
-    );
-
-    const songTimeSlotsIntervals: Array<TimeInterval> | null =
-      songTimeSlots[0][1];
-
-    const songForDate: SongForDate = {
-      songName: song,
-      musicians: Object.values(songsData[song].musicians),
-      possibleTimeSlots: songTimeSlotsIntervals ? songTimeSlotsIntervals : [],
-    };
-
-    updatedPossibleSongsForDate.push(songForDate);
-
-    // setPossibleSongsForDate(updatedPossibleSongsForDate);
-  }
-
-  const [possibleSongsForDate, setPossibleSongsForDate] = useState<
-    SongForDate[]
-  >(updatedPossibleSongsForDate);
+  const { possibleSongsForDate, setPossibleSongsForDate } =
+    useContext<SongsForPickedDateContextProps>(SongsForPickedDateContext);
 
   return (
     <div className="songs-for-picked-date-box">

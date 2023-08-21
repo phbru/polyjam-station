@@ -25,7 +25,10 @@ export const availabilities = {
   },
   "2023-09-02": {
     Mona: [],
-    Rivs: [],
+    Rivs: [
+      { start: "15:00", end: "18:30" },
+      { start: "19:00", end: "20:00" },
+    ],
     Pierre: [{ start: "17:00", end: "22:00" }],
     Valentin: [{ start: "17:00", end: "22:00" }],
     Matthieu: [{ start: "17:00", end: "22:00" }],
