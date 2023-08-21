@@ -1,49 +1,54 @@
 import { useState } from "react";
 import { songsData } from "../data/songsData";
-import { SongListData } from "../interfaces/SongListData";
-import { Song } from "../interfaces/Song";
-import { availabilities } from "../data/availabilitiesData";
-import { Availability } from "../interfaces/Availability";
+
 import { convertedAvailabilities } from "../constants/convertedAvailabilities";
 import { findPossibleIntervals } from "../scenes/dashboard/helpers";
 import { DailyPossibleInterval } from "../types/DailyPossibleInterval";
 import { TimeInterval } from "../interfaces/TimeInterval";
+import { SongForDate } from "../interfaces/SongForDate";
 
 const SongsForPickedDateBox = () => {
-  const [possibleSongs, setPossibleSongs] = useState<Array<Song>>(
-    Object.values(songsData)
-  );
+  const [selectedDate, setSelectedDate] = useState<string>("2023-09-01");
 
-  // const dayAvailabilities: Availability = convertedAvailabilities["2023-09-02"];
-  // const transformedAvailabilities: Availability = {};
+  const updatedPossibleSongsForDate: SongForDate[] = [];
 
-  // const musicians = songsData["Bad Romance"].musicians;
-  // for (const musicianKey in musicians) {
-  //   const musicianName = musicians[musicianKey];
-  //   if (availabilities.hasOwnProperty(musicianName)) {
-  //     transformedAvailabilities[musicianName] = dayAvailabilities[musicianName];
-  //   }
-  // }
+  for (const song in songsData) {
+    const musicianSet = new Set(Object.values(songsData[song].musicians));
 
-  const badRomanceMusiciansSet = new Set(
-    Object.values(songsData["Bad Romance"].musicians)
-  );
+    const songTimeSlots: DailyPossibleInterval[] = findPossibleIntervals(
+      { "2023-09-01": convertedAvailabilities[selectedDate] },
+      musicianSet
+    );
 
-  const badRomanceTimeSlot: DailyPossibleInterval[] = findPossibleIntervals(
-    { "2023-09-01": convertedAvailabilities["2023-09-01"] },
-    badRomanceMusiciansSet
-  );
+    const songTimeSlotsIntervals: Array<TimeInterval> | null =
+      songTimeSlots[0][1];
+
+    const songForDate: SongForDate = {
+      songName: song,
+      musicians: Object.values(songsData[song].musicians),
+      possibleTimeSlots: songTimeSlotsIntervals ? songTimeSlotsIntervals : [],
+    };
+
+    updatedPossibleSongsForDate.push(songForDate);
+
+    // setPossibleSongsForDate(updatedPossibleSongsForDate);
+  }
+
+  const [possibleSongsForDate, setPossibleSongsForDate] = useState<
+    SongForDate[]
+  >(updatedPossibleSongsForDate);
 
   return (
     <div className="songs-for-picked-date-box">
-      {possibleSongs.map((song: Song) => (
-        <p>{song.name}</p>
-      ))}
-      <h4>Bad Romance</h4>
-      {badRomanceTimeSlot[0][1]?.map((timeSlot: TimeInterval, index) => (
-        <p key={index}>
-          [{timeSlot.start.toString()} , {timeSlot.end.toString()}]
-        </p>
+      {possibleSongsForDate.map((song: SongForDate) => (
+        <div>
+          <h4>{song.songName}</h4>
+          {song.possibleTimeSlots?.map((timeSlot: TimeInterval) => (
+            <p>
+              [{timeSlot.start.toString()} , {timeSlot.end.toString()}]
+            </p>
+          ))}
+        </div>
       ))}
     </div>
   );

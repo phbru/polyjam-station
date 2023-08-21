@@ -120,11 +120,11 @@ export const findPossibleIntervals = (
       selectedMusicians,
       convertedAvailabilities[date]
     );
-
     dailyPossibleIntervals.push([
       date,
       findCumulativeOverlap(Object.values(selectedMusiciansAvailability)),
     ]);
   }
+
   return dailyPossibleIntervals;
 };
