@@ -1,4 +1,5 @@
 import { convertedAvailabilities } from "../../constants/convertedAvailabilities";
+import { convertData, parseCsvFile } from "../../data/dataLoader";
 
 import { songsData } from "../../data/songsData";
 import { CheckableSong } from "../../interfaces/CheckableSong";
@@ -11,7 +12,9 @@ export const initialPossibleIntervals = findPossibleIntervals(
   new Set()
 );
 
-console.log(convertedAvailabilities);
+const parsedData = await parseCsvFile("dispos.csv");
+
+convertData(parsedData);
 
 for (const [songName, songContent] of Object.entries(songsData)) {
   songListState.push({

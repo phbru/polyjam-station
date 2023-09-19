@@ -1,30 +1,47 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import Papa from "papaparse";
+import { availabilities } from "./availabilitiesData";
 
-// Function to fetch and parse CSV data
-export async function parseCSVData(csvFilePath: string): Promise<any[]> {
-  console.log(csvFilePath);
+export async function parseCsvFile(filePath: string): Promise<any[]> {
   try {
-    const response = await fetch(csvFilePath);
+    const response = await fetch(filePath);
     if (!response.ok) {
-      throw new Error(`Failed to fetch CSV: ${response.statusText}`);
+      throw new Error("Failed to fetch CSV file");
     }
 
-    const csvText = await response.text();
-    return new Promise((resolve, reject) => {
-      Papa.parse(csvText, {
+    const csvString = await response.text();
+
+    return new Promise<any[]>((resolve, reject) => {
+      Papa.parse(csvString, {
         header: true,
-        skipEmptyLines: true,
         dynamicTyping: true,
+        transformHeader: (header) => {
+          // Replace empty header with a custom key (e.g., 'Date')
+          return header || "Date";
+        },
         complete: (result) => {
           resolve(result.data);
         },
         error: (error) => {
-          reject(error);
+          reject(new Error("CSV parsing error: " + error.message));
         },
       });
     });
   } catch (error) {
-    throw new Error(`Error fetching or parsing CSV: ${error.message}`);
+    throw new Error("CSV fetch error: " + error.message);
   }
+}
+
+export function convertData(dataTable) {
+  const something = {};
+  for (const row of dataTable) {
+    const dateContent = {};
+    for (const entry of Object.entries(row)) {
+      if (entry[0] !== "Date") {
+        dateContent[entry[0]] = entry[1];
+      }
+    }
+
+    something[row["Date"]] = dateContent;
+  }
+  console.log(something);
 }
