@@ -1,5 +1,5 @@
 import { SongData } from "./SongData";
 
-export interface SongListData {
+export interface SongDataByNames {
   [songName: string]: SongData;
 }

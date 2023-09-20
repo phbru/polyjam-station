@@ -1,6 +1,6 @@
-import { SongListData } from "../interfaces/SongListData";
+import { SongDataByNames } from "../interfaces/SongDataByNames";
 
-export const songsData: SongListData = {
+export const songsData: SongDataByNames = {
   "Bad Romance": {
     name: "Bad Romance",
     musicians: {
