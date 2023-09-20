@@ -3,7 +3,7 @@ import { SelectableSong } from "../interfaces/SelectableSong";
 import { DailyPossibleInterval } from "../types/DailyPossibleInterval";
 
 export interface SelectSongsContextProps {
-  checkableCheckableSongList: Array<SelectableSong>;
+  SelectableSongList: Array<SelectableSong>;
   setCheckableSongList: React.Dispatch<React.SetStateAction<SelectableSong[]>>;
   dailyPossibleIntervals: Array<DailyPossibleInterval>;
   setPossibleIntervals: React.Dispatch<
@@ -14,7 +14,7 @@ export interface SelectSongsContextProps {
 }
 
 export const SelectSongsContext = createContext<SelectSongsContextProps>({
-  checkableCheckableSongList: [],
+  SelectableSongList: [],
   setCheckableSongList: () => {},
   dailyPossibleIntervals: [],
   setPossibleIntervals: () => {},

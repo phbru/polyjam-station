@@ -9,7 +9,7 @@ import { convertedAvailabilities } from "../constants/convertedAvailabilities";
 
 const CheckableSongsColumn = () => {
   const {
-    checkableCheckableSongList,
+    SelectableSongList,
     setCheckableSongList,
     setPossibleIntervals,
     selectedMusicians,
@@ -21,13 +21,13 @@ const CheckableSongsColumn = () => {
     songIndex: number
   ) => {
     const updatedSelectedMusicians = new Set(selectedMusicians);
-    const updatedSongs = [...checkableCheckableSongList];
+    const updatedSongs = [...SelectableSongList];
 
     updatedSongs[songIndex].isSelected = event.target.checked;
     setCheckableSongList(updatedSongs);
 
     for (const musician of Object.values(
-      checkableCheckableSongList[songIndex].content.musicians
+      SelectableSongList[songIndex].content.musicians
     )) {
       if (event.target.checked) {
         updatedSelectedMusicians.add(musician);
@@ -50,7 +50,7 @@ const CheckableSongsColumn = () => {
 
   return (
     <div className="checkable-songs-column">
-      {checkableCheckableSongList.map((song, index) => (
+      {SelectableSongList.map((song, index) => (
         <div className="song-component" key={index}>
           <h4 className="song-component__name">
             {song.songName}
