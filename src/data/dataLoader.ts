@@ -2,7 +2,6 @@ import Papa from "papaparse";
 import { AvailabilitiesByDates } from "../interfaces/AvailabilitiesByDates";
 import { Time } from "../classes/Time";
 import { TimeInterval } from "../interfaces/TimeInterval";
-import { To } from "react-router-dom";
 
 export async function parseCsvFile(filePath: string): Promise<any[]> {
   try {
@@ -97,16 +96,21 @@ function computeTimeIntervalsComplement(
   let startOfNextTimeInterval: Time = new Time(0, 0);
 
   for (const timeInterval of timeIntervalArray) {
-    timeIntervalsComplement.push({
-      start: startOfNextTimeInterval,
-      end: timeInterval.start,
-    });
+    if (!timeInterval.start.isEqual(0, 0)) {
+      timeIntervalsComplement.push({
+        start: startOfNextTimeInterval,
+        end: timeInterval.start,
+      });
+    }
     startOfNextTimeInterval = timeInterval.end;
   }
-  timeIntervalsComplement.push({
-    start: startOfNextTimeInterval,
-    end: new Time(23, 59),
-  });
+
+  if (!startOfNextTimeInterval.isEqual(23, 59)) {
+    timeIntervalsComplement.push({
+      start: startOfNextTimeInterval,
+      end: new Time(23, 59),
+    });
+  }
 
   return timeIntervalsComplement;
 }

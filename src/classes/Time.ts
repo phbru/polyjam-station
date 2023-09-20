@@ -58,6 +58,10 @@ export class Time {
     return false;
   }
 
+  isEqual(hours: number, minutes: number): boolean {
+    return this.hours === hours && this.minutes === minutes;
+  }
+
   toString(): string {
     const formattedMinutes =
       this.minutes < 10 ? `0${this.minutes}` : `${this.minutes}`;
