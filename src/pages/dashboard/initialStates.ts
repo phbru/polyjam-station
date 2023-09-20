@@ -1,14 +1,14 @@
-import { convertedAvailabilities } from "../../constants/convertedAvailabilities";
 import { convertData, parseCsvFile } from "../../data/dataLoader";
 
 import { songsData } from "../../data/songsData";
 import { SelectableSong } from "./sections/selectSongsSection/interfaces/SelectableSong";
 import { findPossibleIntervals } from "./helpers";
+import { availabilitiesData } from "../../data/availabilitiesData";
 
 export const songListState: Array<SelectableSong> = [];
 export const allMusicians: Set<string> = new Set();
 export const initialPossibleIntervals = findPossibleIntervals(
-  convertedAvailabilities,
+  availabilitiesData,
   new Set()
 );
 

@@ -72,29 +72,6 @@ export const convertToTime = (timeString: string): Time => {
   return new Time(timeString);
 };
 
-// The provided data have time as string. The converted version has it as Time
-export const convertAvailabilities = (data: any): AvailabilitiesByDates => {
-  const availabilityData: AvailabilitiesByDates = {};
-
-  for (const date in data) {
-    availabilityData[date] = {};
-    const personAvailabilities = data[date];
-
-    for (const person in personAvailabilities) {
-      const ranges = personAvailabilities[person];
-
-      availabilityData[date][person] = ranges.map((range: any) => {
-        return {
-          start: convertToTime(range.start),
-          end: convertToTime(range.end),
-        };
-      });
-    }
-  }
-
-  return availabilityData;
-};
-
 export const getAvailabilitiesFor = (
   selectedMusicians: Set<string>,
   allMusiciansAvailability: TimeSlotsByPersons
@@ -111,13 +88,13 @@ export const getAvailabilitiesFor = (
 };
 
 export const findPossibleIntervals = (
-  convertedAvailabilities: AvailabilitiesByDates,
+  availabilitiesData: AvailabilitiesByDates,
   selectedMusicians: Set<string>
 ): Array<DailyPossibleInterval> => {
   const dailyPossibleIntervals: Array<DailyPossibleInterval> = [];
-  for (const date in convertedAvailabilities) {
+  for (const date in availabilitiesData) {
     const selectedMusiciansAvailability: TimeSlotsByPersons =
-      getAvailabilitiesFor(selectedMusicians, convertedAvailabilities[date]);
+      getAvailabilitiesFor(selectedMusicians, availabilitiesData[date]);
     dailyPossibleIntervals.push([
       date,
       findCumulativeOverlap(Object.values(selectedMusiciansAvailability)),

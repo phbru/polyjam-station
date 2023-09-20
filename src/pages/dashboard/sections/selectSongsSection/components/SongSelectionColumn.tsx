@@ -5,7 +5,7 @@ import {
 } from "../SelectSongsContext";
 import { useContext } from "react";
 import { findPossibleIntervals } from "../../../helpers";
-import { convertedAvailabilities } from "../../../../../constants/convertedAvailabilities";
+import { availabilitiesData } from "../../../../../data/availabilitiesData";
 
 const CheckableSongsColumn = () => {
   const {
@@ -38,7 +38,7 @@ const CheckableSongsColumn = () => {
     setSelectedMusicians(updatedSelectedMusicians);
 
     const updatedPossibleIntervals = findPossibleIntervals(
-      convertedAvailabilities,
+      availabilitiesData,
       updatedSelectedMusicians
     );
     setPossibleIntervals(updatedPossibleIntervals);

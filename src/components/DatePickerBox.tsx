@@ -7,9 +7,9 @@ import { SongWithTimeSlots } from "../interfaces/SongWithTimeSlots";
 import { songsData } from "../data/songsData";
 import { DailyPossibleInterval } from "../types/DailyPossibleInterval";
 import { findPossibleIntervals } from "../pages/dashboard/helpers";
-import { convertedAvailabilities } from "../constants/convertedAvailabilities";
 import { TimeInterval } from "../interfaces/TimeInterval";
 import { Button } from "@mui/material";
+import { availabilitiesData } from "../data/availabilitiesData";
 
 const DatePickerBox = () => {
   const { possibleSongsForDate, setPossibleSongsForDate } =
@@ -35,7 +35,7 @@ const DatePickerBox = () => {
       const musicianSet = new Set(Object.values(songsData[song].musicians));
 
       const songTimeSlots: DailyPossibleInterval[] = findPossibleIntervals(
-        { selectedDate: convertedAvailabilities[selectedDate] },
+        { selectedDate: availabilitiesData[selectedDate] },
         musicianSet
       );
 
