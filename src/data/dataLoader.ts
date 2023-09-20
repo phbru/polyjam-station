@@ -2,6 +2,7 @@ import Papa from "papaparse";
 import { AvailabilitiesByDates } from "../interfaces/AvailabilitiesByDates";
 import { Time } from "../classes/Time";
 import { TimeInterval } from "../interfaces/TimeInterval";
+import { To } from "react-router-dom";
 
 export async function parseCsvFile(filePath: string): Promise<any[]> {
   try {
@@ -41,6 +42,7 @@ export function convertToAvailabilitiesByDates(
     const dateContent = {};
     for (const entry of Object.entries(row)) {
       if (entry[0] !== "Date") {
+        //entry is a person
         dateContent[entry[0]] = convertUnavailabilityToAvailabilityTimeSlots(
           entry[1]
         );
@@ -63,10 +65,11 @@ function convertUnavailabilityToAvailabilityTimeSlots(
     return [{ start: new Time("00:00"), end: new Time("23:59") }];
   }
 
-  const timeIntervals: string[] = unavailableTimeIntervals.split(";");
-  console.log("timeIntervalSS : ", timeIntervals);
-  const availabilityTimeSlots: Array<TimeInterval> = [];
-  for (const timeInterval of timeIntervals) {
+  const unavailabilityStringArray: string[] =
+    unavailableTimeIntervals.split(";");
+
+  const unavailabilityTimeIntervals: Array<TimeInterval> = [];
+  for (const timeInterval of unavailabilityStringArray) {
     let [start, end] = timeInterval.split("-");
 
     if (start === "*") {
@@ -77,12 +80,33 @@ function convertUnavailabilityToAvailabilityTimeSlots(
       end = "23h59";
     }
 
-    availabilityTimeSlots.push({
+    unavailabilityTimeIntervals.push({
       start: new Time(start),
       end: new Time(end),
     });
-    console.log("availabilityTimeSlots : ", availabilityTimeSlots);
   }
 
-  return availabilityTimeSlots;
+  return computeTimeIntervalsComplement(unavailabilityTimeIntervals);
+}
+
+function computeTimeIntervalsComplement(
+  timeIntervalArray: Array<TimeInterval>
+): Array<TimeInterval> {
+  const timeIntervalsComplement: Array<TimeInterval> = [];
+
+  let startOfNextTimeInterval: Time = new Time(0, 0);
+
+  for (const timeInterval of timeIntervalArray) {
+    timeIntervalsComplement.push({
+      start: startOfNextTimeInterval,
+      end: timeInterval.start,
+    });
+    startOfNextTimeInterval = timeInterval.end;
+  }
+  timeIntervalsComplement.push({
+    start: startOfNextTimeInterval,
+    end: new Time(23, 59),
+  });
+
+  return timeIntervalsComplement;
 }
