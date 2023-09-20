@@ -1,9 +1,11 @@
 import { createContext } from "react";
-import { SongForDate } from "../../../../interfaces/SongForDate";
+import { SongWithTimeSlots } from "../../../../interfaces/SongWithTimeSlots";
 
 export interface SongsForPickedDateContextProps {
-  possibleSongsForDate: SongForDate[];
-  setPossibleSongsForDate: React.Dispatch<React.SetStateAction<SongForDate[]>>;
+  possibleSongsForDate: SongWithTimeSlots[];
+  setPossibleSongsForDate: React.Dispatch<
+    React.SetStateAction<SongWithTimeSlots[]>
+  >;
 }
 
 export const SongsForPickedDateContext =

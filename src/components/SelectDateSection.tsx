@@ -1,12 +1,12 @@
 import { useState } from "react";
 import { SongsForPickedDateContext } from "../pages/dashboard/sections/selectSongsSection/SongsForPickedDateContext";
-import { SongForDate } from "../interfaces/SongForDate";
+import { SongWithTimeSlots } from "../interfaces/SongWithTimeSlots";
 import DatePickerBox from "./DatePickerBox";
 import SongsForPickedDateBox from "./SongsForPickedDateBox";
 
 const SelectDateSection = () => {
   const [possibleSongsForDate, setPossibleSongsForDate] = useState<
-    SongForDate[]
+    SongWithTimeSlots[]
   >([]);
 
   return (

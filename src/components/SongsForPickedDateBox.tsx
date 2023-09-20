@@ -1,7 +1,7 @@
 import { useContext } from "react";
 
 import { TimeInterval } from "../interfaces/TimeInterval";
-import { SongForDate } from "../interfaces/SongForDate";
+import { SongWithTimeSlots } from "../interfaces/SongWithTimeSlots";
 import {
   SongsForPickedDateContext,
   SongsForPickedDateContextProps,
@@ -13,7 +13,7 @@ const SongsForPickedDateBox = () => {
 
   return (
     <div className="songs-for-picked-date-box">
-      {possibleSongsForDate.map((song: SongForDate) => (
+      {possibleSongsForDate.map((song: SongWithTimeSlots) => (
         <div>
           <h4>{song.songName}</h4>
           {song.possibleTimeSlots?.map((timeSlot: TimeInterval) => (
