@@ -2,10 +2,10 @@ import Checkbox from "@mui/material/Checkbox";
 import {
   SelectSongsContext,
   SelectSongsContextProps,
-} from "../contexts/SelectSongsContext";
+} from "../../../../../contexts/SelectSongsContext";
 import { useContext } from "react";
-import { findPossibleIntervals } from "../pages/dashboard/helpers";
-import { convertedAvailabilities } from "../constants/convertedAvailabilities";
+import { findPossibleIntervals } from "../../../helpers";
+import { convertedAvailabilities } from "../../../../../constants/convertedAvailabilities";
 
 const CheckableSongsColumn = () => {
   const {

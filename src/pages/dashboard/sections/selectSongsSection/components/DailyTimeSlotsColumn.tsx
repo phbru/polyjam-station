@@ -3,7 +3,7 @@ import { useContext } from "react";
 import {
   SelectSongsContext,
   SelectSongsContextProps,
-} from "../contexts/SelectSongsContext";
+} from "../../../../../contexts/SelectSongsContext";
 
 const DailyTimeSlotsColumn = () => {
   const { dailyPossibleIntervals } =

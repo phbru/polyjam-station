@@ -2,15 +2,12 @@ import { useContext, useState } from "react";
 import {
   SelectSongsContext,
   SelectSongsContextProps,
-} from "../contexts/SelectSongsContext";
-import SongSelectionColumn from "./SongSelectionColumn";
-import DailyTimeSlotsColumn from "./DailyTimeSlotsColumn";
-import { SelectableSong } from "../interfaces/SelectableSong";
-import {
-  initialPossibleIntervals,
-  songListState,
-} from "../pages/dashboard/initialStates";
-import { DailyPossibleInterval } from "../types/DailyPossibleInterval";
+} from "../../../../contexts/SelectSongsContext";
+import SongSelectionColumn from "./components/SongSelectionColumn";
+import DailyTimeSlotsColumn from "./components/DailyTimeSlotsColumn";
+import { SelectableSong } from "../../../../interfaces/SelectableSong";
+import { initialPossibleIntervals, songListState } from "../../initialStates";
+import { DailyPossibleInterval } from "../../../../types/DailyPossibleInterval";
 
 const SelectSongsSection = () => {
   useContext<SelectSongsContextProps>(SelectSongsContext);
