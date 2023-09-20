@@ -1,5 +1,5 @@
 import { TimeInterval } from "./TimeInterval";
 
-export interface Availability {
+export interface TimeSlotsByPersons {
   [person: string]: Array<TimeInterval>;
 }

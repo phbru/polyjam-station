@@ -1,6 +1,6 @@
 import { Time } from "../../classes/Time";
 import { AvailabilitiesByDates } from "../../interfaces/AvailabilitiesByDates";
-import { Availability } from "../../interfaces/Availability";
+import { TimeSlotsByPersons } from "../../interfaces/TimeSlotsByPersons";
 
 import { TimeInterval } from "../../interfaces/TimeInterval";
 import { DailyPossibleInterval } from "../../types/DailyPossibleInterval";
@@ -97,9 +97,9 @@ export const convertAvailabilities = (data: any): AvailabilitiesByDates => {
 
 export const getAvailabilitiesFor = (
   selectedMusicians: Set<string>,
-  allMusiciansAvailability: Availability
-): Availability => {
-  const selectedMusiciansAvailability: Availability = {};
+  allMusiciansAvailability: TimeSlotsByPersons
+): TimeSlotsByPersons => {
+  const selectedMusiciansAvailability: TimeSlotsByPersons = {};
   for (const [musician, availability] of Object.entries(
     allMusiciansAvailability
   )) {
@@ -116,10 +116,8 @@ export const findPossibleIntervals = (
 ): Array<DailyPossibleInterval> => {
   const dailyPossibleIntervals: Array<DailyPossibleInterval> = [];
   for (const date in convertedAvailabilities) {
-    const selectedMusiciansAvailability: Availability = getAvailabilitiesFor(
-      selectedMusicians,
-      convertedAvailabilities[date]
-    );
+    const selectedMusiciansAvailability: TimeSlotsByPersons =
+      getAvailabilitiesFor(selectedMusicians, convertedAvailabilities[date]);
     dailyPossibleIntervals.push([
       date,
       findCumulativeOverlap(Object.values(selectedMusiciansAvailability)),

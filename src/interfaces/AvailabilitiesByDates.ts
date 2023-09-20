@@ -1,5 +1,5 @@
-import { Availability } from "./Availability";
+import { TimeSlotsByPersons } from "./TimeSlotsByPersons";
 
 export interface AvailabilitiesByDates {
-  [date: string]: Availability;
+  [date: string]: TimeSlotsByPersons;
 }
