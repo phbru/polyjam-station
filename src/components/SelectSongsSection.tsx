@@ -25,7 +25,7 @@ const SelectSongsSection = () => {
   >(initialPossibleIntervals);
 
   return (
-    <div className="time-slots-for-every-date-section">
+    <div className="select-songs-section">
       <SelectSongsContext.Provider
         value={{
           SelectableSongList: SelectableSongList,

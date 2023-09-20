@@ -52,7 +52,7 @@ ul li {
   display: flex;
   width: 100%;
 }
-.time-slots-for-every-date-section {
+.select-songs-section {
   display: flex;
 
   width: 50%;
@@ -62,7 +62,7 @@ ul li {
   border-right-width: 0.25rem;
 }
 
-.checkable-songs-column {
+.song-selection-column {
   border-right: solid #555;
   width: 12rem;
 }
@@ -75,7 +75,7 @@ ul li {
   margin: 0;
 }
 
-.songs-for-a-date-section {
+.select-date-section {
   display: flex;
   flex-direction: column;
 

@@ -10,7 +10,7 @@ const SelectDateSection = () => {
   >([]);
 
   return (
-    <div className="songs-for-a-date-section">
+    <div className="select-date-section">
       <SongsForPickedDateContext.Provider
         value={{ possibleSongsForDate, setPossibleSongsForDate }}
       >

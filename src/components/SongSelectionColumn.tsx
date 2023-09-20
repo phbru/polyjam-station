@@ -49,7 +49,7 @@ const CheckableSongsColumn = () => {
   };
 
   return (
-    <div className="checkable-songs-column">
+    <div className="song-selection-column">
       {SelectableSongList.map((song, index) => (
         <div className="song-component" key={index}>
           <h4 className="song-component__name">
