@@ -1,6 +1,6 @@
 import { Song } from "./Song";
 
-export interface CheckableSong {
+export interface SelectableSong {
   songName: string;
   checked: boolean;
   content: Song;

@@ -2,10 +2,10 @@ import { convertedAvailabilities } from "../../constants/convertedAvailabilities
 import { convertData, parseCsvFile } from "../../data/dataLoader";
 
 import { songsData } from "../../data/songsData";
-import { CheckableSong } from "../../interfaces/CheckableSong";
+import { SelectableSong } from "../../interfaces/SelectableSong";
 import { findPossibleIntervals } from "./helpers";
 
-export const songListState: Array<CheckableSong> = [];
+export const songListState: Array<SelectableSong> = [];
 export const allMusicians: Set<string> = new Set();
 export const initialPossibleIntervals = findPossibleIntervals(
   convertedAvailabilities,

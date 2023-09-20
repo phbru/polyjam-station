@@ -5,7 +5,7 @@ import {
 } from "../contexts/SelectSongsContext";
 import SongSelectionColumn from "./SongSelectionColumn";
 import DailyTimeSlotsColumn from "./DailyTimeSlotsColumn";
-import { CheckableSong } from "../interfaces/CheckableSong";
+import { SelectableSong } from "../interfaces/SelectableSong";
 import {
   initialPossibleIntervals,
   songListState,
@@ -16,7 +16,7 @@ const SelectSongsSection = () => {
   useContext<SelectSongsContextProps>(SelectSongsContext);
 
   const [checkableCheckableSongList, setCheckableSongList] =
-    useState<Array<CheckableSong>>(songListState);
+    useState<Array<SelectableSong>>(songListState);
   const [selectedMusicians, setSelectedMusicians] = useState<Set<string>>(
     new Set()
   );

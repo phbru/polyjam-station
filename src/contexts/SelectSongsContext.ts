@@ -1,10 +1,10 @@
 import { createContext } from "react";
-import { CheckableSong } from "../interfaces/CheckableSong";
+import { SelectableSong } from "../interfaces/SelectableSong";
 import { DailyPossibleInterval } from "../types/DailyPossibleInterval";
 
 export interface SelectSongsContextProps {
-  checkableCheckableSongList: Array<CheckableSong>;
-  setCheckableSongList: React.Dispatch<React.SetStateAction<CheckableSong[]>>;
+  checkableCheckableSongList: Array<SelectableSong>;
+  setCheckableSongList: React.Dispatch<React.SetStateAction<SelectableSong[]>>;
   dailyPossibleIntervals: Array<DailyPossibleInterval>;
   setPossibleIntervals: React.Dispatch<
     React.SetStateAction<Array<DailyPossibleInterval>>

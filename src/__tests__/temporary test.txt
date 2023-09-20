@@ -20,7 +20,7 @@
     end: new Time("19:00"),
   };
   console.log(findOverlapBetweenTwoIntervals(time21, time22));
-  const songListState: Array<CheckableSong> = [];
+  const songListState: Array<SelectableSong> = [];
   const importedAvailabilities: Availabilities = availabilities;
 
   console.log("TEST 3");
