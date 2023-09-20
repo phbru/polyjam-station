@@ -3,6 +3,6 @@ import { SongData } from "./SongData";
 export interface SelectableSong {
   songName: string;
   isSelected: boolean;
-  songContent: SongData;
+  songData: SongData;
   priority: number | undefined;
 }

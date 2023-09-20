@@ -15,15 +15,15 @@ export const initialPossibleIntervals = findPossibleIntervals(
 const parsedData = await parseCsvFile("dispos.csv");
 convertData(parsedData);
 
-for (const [songName, songContent] of Object.entries(songsData)) {
+for (const [songName, songData] of Object.entries(songsData)) {
   songListState.push({
     songName: songName,
     isSelected: false,
-    content: songContent,
+    songData: songData,
     priority: undefined,
   });
 
-  for (const musician of Object.values(songContent.musicians)) {
+  for (const musician of Object.values(songData.musicians)) {
     allMusicians.add(musician);
   }
 }

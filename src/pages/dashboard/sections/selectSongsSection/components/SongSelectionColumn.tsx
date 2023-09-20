@@ -27,7 +27,7 @@ const CheckableSongsColumn = () => {
     setSelectableSongList(updatedSongs);
 
     for (const musician of Object.values(
-      SelectableSongList[songIndex].content.musicians
+      SelectableSongList[songIndex].songData.musicians
     )) {
       if (event.target.checked) {
         updatedSelectedMusicians.add(musician);
@@ -42,10 +42,6 @@ const CheckableSongsColumn = () => {
       updatedSelectedMusicians
     );
     setPossibleIntervals(updatedPossibleIntervals);
-
-    console.log(updatedSongs);
-    console.log(updatedSelectedMusicians);
-    console.log(updatedPossibleIntervals);
   };
 
   return (
@@ -55,11 +51,11 @@ const CheckableSongsColumn = () => {
           <h4 className="song-component__name">
             {song.songName}
             <Checkbox
-              isSelected={song.isSelected}
+              checked={song.isSelected}
               onChange={(event) => handleCheck(event, index)}
             />
           </h4>
-          {Object.entries(song.content.musicians).map(
+          {Object.entries(song.songData.musicians).map(
             ([instrument, musician]) => (
               <ul key={instrument}>
                 <li>
