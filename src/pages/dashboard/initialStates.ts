@@ -2,7 +2,7 @@ import { convertedAvailabilities } from "../../constants/convertedAvailabilities
 import { convertData, parseCsvFile } from "../../data/dataLoader";
 
 import { songsData } from "../../data/songsData";
-import { SelectableSong } from "../../interfaces/SelectableSong";
+import { SelectableSong } from "./sections/selectSongsSection/interfaces/SelectableSong";
 import { findPossibleIntervals } from "./helpers";
 
 export const songListState: Array<SelectableSong> = [];

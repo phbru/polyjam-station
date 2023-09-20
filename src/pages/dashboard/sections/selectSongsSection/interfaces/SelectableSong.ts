@@ -1,4 +1,4 @@
-import { SongData } from "./SongData";
+import { SongData } from "../../../../../interfaces/SongData";
 
 export interface SelectableSong {
   songName: string;
