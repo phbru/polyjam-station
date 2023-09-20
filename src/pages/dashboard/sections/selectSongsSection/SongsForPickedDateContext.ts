@@ -1,5 +1,5 @@
 import { createContext } from "react";
-import { SongForDate } from "../interfaces/SongForDate";
+import { SongForDate } from "../../../../interfaces/SongForDate";
 
 export interface SongsForPickedDateContextProps {
   possibleSongsForDate: SongForDate[];
