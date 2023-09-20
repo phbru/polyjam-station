@@ -9,7 +9,7 @@ import { SelectableSong } from "../interfaces/SelectableSong";
 import {
   initialPossibleIntervals,
   songListState,
-} from "../scenes/dashboard/initialStates";
+} from "../pages/dashboard/initialStates";
 import { DailyPossibleInterval } from "../types/DailyPossibleInterval";
 
 const SelectSongsSection = () => {

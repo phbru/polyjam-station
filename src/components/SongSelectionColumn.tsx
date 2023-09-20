@@ -4,7 +4,7 @@ import {
   SelectSongsContextProps,
 } from "../contexts/SelectSongsContext";
 import { useContext } from "react";
-import { findPossibleIntervals } from "../scenes/dashboard/helpers";
+import { findPossibleIntervals } from "../pages/dashboard/helpers";
 import { convertedAvailabilities } from "../constants/convertedAvailabilities";
 
 const CheckableSongsColumn = () => {

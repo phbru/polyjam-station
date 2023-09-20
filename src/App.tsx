@@ -1,4 +1,4 @@
-import Dashboard from "./scenes/dashboard/Dashboard";
+import Dashboard from "./pages/dashboard/Dashboard";
 
 function App() {
   return (
