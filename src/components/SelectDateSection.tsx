@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { SongsForPickedDateContext } from "../pages/dashboard/sections/selectSongsSection/SongsForPickedDateContext";
+import { SongsForPickedDateContext } from "../contexts/SongsForPickedDateContext";
 import { SongWithTimeSlots } from "../interfaces/SongWithTimeSlots";
 import DatePickerBox from "./DatePickerBox";
 import SongsForPickedDateBox from "./SongsForPickedDateBox";

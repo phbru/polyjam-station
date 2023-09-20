@@ -2,7 +2,7 @@ import Checkbox from "@mui/material/Checkbox";
 import {
   SelectSongsContext,
   SelectSongsContextProps,
-} from "../../../../../contexts/SelectSongsContext";
+} from "../SelectSongsContext";
 import { useContext } from "react";
 import { findPossibleIntervals } from "../../../helpers";
 import { convertedAvailabilities } from "../../../../../constants/convertedAvailabilities";

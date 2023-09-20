@@ -5,7 +5,7 @@ import { SongWithTimeSlots } from "../interfaces/SongWithTimeSlots";
 import {
   SongsForPickedDateContext,
   SongsForPickedDateContextProps,
-} from "../pages/dashboard/sections/selectSongsSection/SongsForPickedDateContext";
+} from "../contexts/SongsForPickedDateContext";
 
 const SongsForPickedDateBox = () => {
   const { possibleSongsForDate, setPossibleSongsForDate } =

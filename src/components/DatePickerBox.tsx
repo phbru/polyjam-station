@@ -2,7 +2,7 @@ import { ChangeEvent, useContext, useState } from "react";
 import {
   SongsForPickedDateContext,
   SongsForPickedDateContextProps,
-} from "../pages/dashboard/sections/selectSongsSection/SongsForPickedDateContext";
+} from "../contexts/SongsForPickedDateContext";
 import { SongWithTimeSlots } from "../interfaces/SongWithTimeSlots";
 import { songsData } from "../data/songsData";
 import { DailyPossibleInterval } from "../types/DailyPossibleInterval";

@@ -1,6 +1,6 @@
 import { createContext } from "react";
-import { SelectableSong } from "../interfaces/SelectableSong";
-import { DailyPossibleInterval } from "../types/DailyPossibleInterval";
+import { SelectableSong } from "../../../../interfaces/SelectableSong";
+import { DailyPossibleInterval } from "../../../../types/DailyPossibleInterval";
 
 export interface SelectSongsContextProps {
   SelectableSongList: Array<SelectableSong>;

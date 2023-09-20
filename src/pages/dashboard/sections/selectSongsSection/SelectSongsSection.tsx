@@ -2,7 +2,7 @@ import { useContext, useState } from "react";
 import {
   SelectSongsContext,
   SelectSongsContextProps,
-} from "../../../../contexts/SelectSongsContext";
+} from "./SelectSongsContext";
 import SongSelectionColumn from "./components/SongSelectionColumn";
 import DailyTimeSlotsColumn from "./components/DailyTimeSlotsColumn";
 import { SelectableSong } from "../../../../interfaces/SelectableSong";
