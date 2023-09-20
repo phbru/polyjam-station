@@ -1,11 +1,11 @@
-import TimeSlotsForEveryDatesSection from "../../components/TimeSlotsForEveryDateSection";
-import SongsForADateSection from "../../components/SongsForADateSection";
+import SelectSongsSection from "../../components/SelectSongsSection";
+import SelectDateSection from "../../components/SelectDateSection";
 
 const Dashboard = () => {
   return (
     <div className="dashboard">
-      <TimeSlotsForEveryDatesSection />
-      <SongsForADateSection />
+      <SelectSongsSection />
+      <SelectDateSection />
     </div>
   );
 };

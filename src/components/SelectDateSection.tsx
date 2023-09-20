@@ -4,7 +4,7 @@ import { SongForDate } from "../interfaces/SongForDate";
 import DatePickerBox from "./DatePickerBox";
 import SongsForPickedDateBox from "./SongsForPickedDateBox";
 
-const SongsForADateSection = () => {
+const SelectDateSection = () => {
   const [possibleSongsForDate, setPossibleSongsForDate] = useState<
     SongForDate[]
   >([]);
@@ -21,4 +21,4 @@ const SongsForADateSection = () => {
   );
 };
 
-export default SongsForADateSection;
+export default SelectDateSection;

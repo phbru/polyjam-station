@@ -1,5 +1,4 @@
 import Papa from "papaparse";
-import { availabilities } from "./availabilitiesData";
 
 export async function parseCsvFile(filePath: string): Promise<any[]> {
   try {

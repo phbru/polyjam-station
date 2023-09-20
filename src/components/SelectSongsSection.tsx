@@ -12,7 +12,7 @@ import {
 } from "../scenes/dashboard/initialStates";
 import { DailyPossibleInterval } from "../types/DailyPossibleInterval";
 
-const TimeSlotsForEveryDatesSection = () => {
+const SelectSongsSection = () => {
   useContext<TimeSlotsForEveryDateContextProps>(TimeSlotsForEveryDateContext);
 
   const [checkableCheckableSongList, setCheckableSongList] =
@@ -42,4 +42,4 @@ const TimeSlotsForEveryDatesSection = () => {
   );
 };
 
-export default TimeSlotsForEveryDatesSection;
+export default SelectSongsSection;

@@ -13,7 +13,6 @@ export const initialPossibleIntervals = findPossibleIntervals(
 );
 
 const parsedData = await parseCsvFile("dispos.csv");
-
 convertData(parsedData);
 
 for (const [songName, songContent] of Object.entries(songsData)) {
