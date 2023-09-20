@@ -1,5 +1,5 @@
-import { Song } from "./Song";
+import { SongData } from "./SongData";
 
 export interface SongListData {
-  [song: string]: Song;
+  [songName: string]: SongData;
 }

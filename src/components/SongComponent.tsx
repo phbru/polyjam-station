@@ -1,5 +1,5 @@
 // interface SongComponentProps {
-//   song: Song;
+//   song: SongData;
 // }
 
 // const SongComponent = (props: SongComponentProps) => {

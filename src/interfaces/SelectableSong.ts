@@ -1,8 +1,8 @@
-import { Song } from "./Song";
+import { SongData } from "./SongData";
 
 export interface SelectableSong {
   songName: string;
   isSelected: boolean;
-  content: Song;
+  songContent: SongData;
   priority: number | undefined;
 }
