@@ -15,7 +15,7 @@ import { DailyPossibleInterval } from "../types/DailyPossibleInterval";
 const SelectSongsSection = () => {
   useContext<SelectSongsContextProps>(SelectSongsContext);
 
-  const [SelectableSongList, setCheckableSongList] =
+  const [SelectableSongList, setSelectableSongList] =
     useState<Array<SelectableSong>>(songListState);
   const [selectedMusicians, setSelectedMusicians] = useState<Set<string>>(
     new Set()
@@ -29,7 +29,7 @@ const SelectSongsSection = () => {
       <SelectSongsContext.Provider
         value={{
           SelectableSongList: SelectableSongList,
-          setCheckableSongList,
+          setSelectableSongList,
           dailyPossibleIntervals,
           setPossibleIntervals,
           selectedMusicians,
