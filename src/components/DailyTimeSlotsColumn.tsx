@@ -1,13 +1,13 @@
 import { useContext } from "react";
 
 import {
-  TimeSlotsForEveryDateContext,
-  TimeSlotsForEveryDateContextProps,
-} from "../contexts/TimeSlotsForEveryDateContext";
+  SelectSongsContext,
+  SelectSongsContextProps,
+} from "../contexts/SelectSongsContext";
 
 const DailyTimeSlotsColumn = () => {
   const { dailyPossibleIntervals } =
-    useContext<TimeSlotsForEveryDateContextProps>(TimeSlotsForEveryDateContext);
+    useContext<SelectSongsContextProps>(SelectSongsContext);
   return (
     <div className="daily-time-slots-column">
       <h3>Journées possibles</h3>
