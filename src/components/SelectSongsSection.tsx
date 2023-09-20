@@ -3,7 +3,7 @@ import {
   TimeSlotsForEveryDateContext,
   TimeSlotsForEveryDateContextProps,
 } from "../contexts/TimeSlotsForEveryDateContext";
-import CheckableSongsColumn from "./CheckableSongsColumn";
+import SongSelectionColumn from "./SongSelectionColumn";
 import DailyTimeSlotsColumn from "./DailyTimeSlotsColumn";
 import { CheckableSong } from "../interfaces/CheckableSong";
 import {
@@ -23,6 +23,7 @@ const SelectSongsSection = () => {
   const [dailyPossibleIntervals, setPossibleIntervals] = useState<
     Array<DailyPossibleInterval>
   >(initialPossibleIntervals);
+
   return (
     <div className="time-slots-for-every-date-section">
       <TimeSlotsForEveryDateContext.Provider
@@ -35,7 +36,7 @@ const SelectSongsSection = () => {
           setSelectedMusicians,
         }}
       >
-        <CheckableSongsColumn />
+        <SongSelectionColumn />
         <DailyTimeSlotsColumn />
       </TimeSlotsForEveryDateContext.Provider>
     </div>
