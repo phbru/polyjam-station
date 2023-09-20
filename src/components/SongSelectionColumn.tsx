@@ -23,7 +23,7 @@ const CheckableSongsColumn = () => {
     const updatedSelectedMusicians = new Set(selectedMusicians);
     const updatedSongs = [...checkableCheckableSongList];
 
-    updatedSongs[songIndex].checked = event.target.checked;
+    updatedSongs[songIndex].isSelected = event.target.checked;
     setCheckableSongList(updatedSongs);
 
     for (const musician of Object.values(
@@ -55,7 +55,7 @@ const CheckableSongsColumn = () => {
           <h4 className="song-component__name">
             {song.songName}
             <Checkbox
-              checked={song.checked}
+              isSelected={song.isSelected}
               onChange={(event) => handleCheck(event, index)}
             />
           </h4>

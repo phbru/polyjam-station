@@ -2,7 +2,7 @@ import { Song } from "./Song";
 
 export interface SelectableSong {
   songName: string;
-  checked: boolean;
+  isSelected: boolean;
   content: Song;
   priority: number | undefined;
 }

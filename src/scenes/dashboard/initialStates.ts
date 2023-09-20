@@ -18,7 +18,7 @@ convertData(parsedData);
 for (const [songName, songContent] of Object.entries(songsData)) {
   songListState.push({
     songName: songName,
-    checked: false,
+    isSelected: false,
     content: songContent,
     priority: undefined,
   });
