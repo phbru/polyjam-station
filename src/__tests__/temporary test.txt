@@ -21,7 +21,7 @@
   };
   console.log(findOverlapBetweenTwoIntervals(time21, time22));
   const songListState: Array<SelectableSong> = [];
-  const importedAvailabilities: Availabilities = availabilities;
+  const importedAvailabilities: AvailabilitiesByDates = availabilities;
 
   console.log("TEST 3");
   const intervalsA: Array<TimeInterval> = [

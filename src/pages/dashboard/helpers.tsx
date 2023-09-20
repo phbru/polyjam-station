@@ -1,5 +1,5 @@
 import { Time } from "../../classes/Time";
-import { Availabilities } from "../../interfaces/Availabilities";
+import { AvailabilitiesByDates } from "../../interfaces/AvailabilitiesByDates";
 import { Availability } from "../../interfaces/Availability";
 
 import { TimeInterval } from "../../interfaces/TimeInterval";
@@ -73,8 +73,8 @@ export const convertToTime = (timeString: string): Time => {
 };
 
 // The provided data have time as string. The converted version has it as Time
-export const convertAvailabilities = (data: any): Availabilities => {
-  const availabilityData: Availabilities = {};
+export const convertAvailabilities = (data: any): AvailabilitiesByDates => {
+  const availabilityData: AvailabilitiesByDates = {};
 
   for (const date in data) {
     availabilityData[date] = {};
@@ -111,7 +111,7 @@ export const getAvailabilitiesFor = (
 };
 
 export const findPossibleIntervals = (
-  convertedAvailabilities: Availabilities,
+  convertedAvailabilities: AvailabilitiesByDates,
   selectedMusicians: Set<string>
 ): Array<DailyPossibleInterval> => {
   const dailyPossibleIntervals: Array<DailyPossibleInterval> = [];

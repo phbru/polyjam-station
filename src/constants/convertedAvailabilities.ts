@@ -1,6 +1,6 @@
 import { availabilities } from "../data/availabilitiesData";
-import { Availabilities } from "../interfaces/Availabilities";
+import { AvailabilitiesByDates } from "../interfaces/AvailabilitiesByDates";
 import { convertAvailabilities } from "../pages/dashboard/helpers";
 
-export const convertedAvailabilities: Availabilities =
+export const convertedAvailabilities: AvailabilitiesByDates =
   convertAvailabilities(availabilities);
