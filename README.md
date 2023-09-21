@@ -1,4 +1,4 @@
-# Project Setup
+#### repo : https://github.com/phbru/polyjam-station
 
 ## Requirements
 
@@ -6,21 +6,24 @@
 
 ## Prepare data
 
-There are two data files to place in the project.
+#### There are two data files to place in the project.
+> Place them in the /data folder at the root of the project
 
-> Both are csv files and should be formatted in such a way that first row and first column are headers
+- Both must respect the following names
+         - dispos.csv : gives the unavailabilities of people
+         - songs.csv : gives the current repertoire
+  
+- Both are csv files and should be formatted in such a way that first row and first column are headers.
 > i.e. the data itself start on row 2 and column 2 and _there is no extra lines and columns at the start of the file_
-> Ex :
-
-         columnName1  columnName2   ...
-
-rowName1 data11 data12 ...
-rowName2 data21 data22 ...
+> Example :
+```
+                 columnName1  columnName2         ...
+rowName1          data11          data12          ...
+rowName2          data21          data22          ...
 ...
+```
 
-> Both must respect the following names
 
-- dispos.csv :
 
 ## Launch app
 
