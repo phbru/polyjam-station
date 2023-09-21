@@ -1,5 +1,6 @@
 import {
   convertToAvailabilitiesByDates,
+  convertToSongDataByNames,
   parseCsvFile,
   parseSongs,
 } from "../../../../data/dataLoader";
@@ -22,6 +23,8 @@ console.log("parsedData : ", parsedData);
 
 const parsedSongs = await parseSongs("./data/songs.csv");
 console.log("parsedSongs : ", parsedSongs);
+const songDataByNames = convertToSongDataByNames(parsedSongs);
+console.log("songDataByNames : ", songDataByNames);
 
 for (const [songName, songData] of Object.entries(songsData)) {
   songListState.push({

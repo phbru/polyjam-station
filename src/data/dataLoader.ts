@@ -2,6 +2,8 @@ import Papa from "papaparse";
 import { AvailabilitiesByDates } from "../interfaces/AvailabilitiesByDates";
 import { Time } from "../classes/Time";
 import { TimeInterval } from "../interfaces/TimeInterval";
+import { SongDataByNames } from "../interfaces/SongDataByNames";
+import { SongData } from "../interfaces/SongData";
 
 export async function parseCsvFile(filePath: string): Promise<any[]> {
   try {
@@ -144,4 +146,26 @@ export async function parseSongs(filePath: string): Promise<any[]> {
   } catch (error) {
     throw new Error("CSV fetch error: " + error.message);
   }
+}
+
+export function convertToSongDataByNames(dataTable: any) {
+  const songDataByNames: SongDataByNames = {};
+
+  for (const row of dataTable) {
+    const songContent: SongData = {
+      name: "",
+      musicians: {},
+    };
+    songContent.name = row["Chanson"];
+
+    for (const entry of Object.entries(row)) {
+      if (entry[0] !== "Chanson") {
+        songContent.musicians[entry[0]] = entry[1];
+      }
+    }
+
+    songDataByNames[row["Chanson"]] = songContent;
+  }
+
+  return songDataByNames;
 }
