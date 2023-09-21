@@ -10,6 +10,7 @@ import { SelectableSong } from "./interfaces/SelectableSong";
 import { findPossibleIntervals } from "../../helpers";
 import { availabilitiesData } from "../../../../data/availabilitiesData";
 import { DailyPossibleInterval } from "../../../../types/DailyPossibleInterval";
+import { AvailabilitiesByDates } from "../../../../interfaces/AvailabilitiesByDates";
 
 export const songListState: Array<SelectableSong> = [];
 export const allMusicians: Set<string> = new Set();
@@ -17,12 +18,11 @@ export const initialPossibleIntervals: Array<DailyPossibleInterval> =
   findPossibleIntervals(availabilitiesData, new Set());
 
 const parsedData = await parseCsvFile("./data/dispos.csv");
-console.log("parsedData : ", parsedData);
-convertToAvailabilitiesByDates(parsedData);
-console.log("parsedData : ", parsedData);
+const availabilitiesByDates: AvailabilitiesByDates =
+  convertToAvailabilitiesByDates(parsedData);
+console.log("availabilitiesByDates : ", availabilitiesByDates);
 
 const parsedSongs = await parseSongs("./data/songs.csv");
-console.log("parsedSongs : ", parsedSongs);
 const songDataByNames = convertToSongDataByNames(parsedSongs);
 console.log("songDataByNames : ", songDataByNames);
 

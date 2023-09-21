@@ -47,14 +47,11 @@ export function convertToAvailabilitiesByDates(
         dateContent[entry[0]] = convertUnavailabilityToAvailabilityTimeSlots(
           entry[1]
         );
-        console.log(entry[1]);
-        console.log(dateContent[entry[0]]);
       }
     }
 
     availabilitiesByDates[row["Date"]] = dateContent;
   }
-  console.log("availabilitiesByDates : ", availabilitiesByDates);
 
   return availabilitiesByDates;
 }
