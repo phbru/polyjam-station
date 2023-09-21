@@ -1,27 +1,43 @@
-# React + TypeScript + Vite
+# Project Setup
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Requirements
 
-Currently, two official plugins are available:
+- Install Node: https://nodejs.org/en/download ( juste pèse sur le carré "Windows Installer" et lance le fichier qui se télécharge)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Prepare data
 
-## Expanding the ESLint configuration
+There are two data files to place in the project.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+> Both are csv files and should be formatted in such a way that first row and first column are headers
+> i.e. the data itself start on row 2 and column 2 and _there is no extra lines and columns at the start of the file_
+> Ex :
 
-- Configure the top-level `parserOptions` property like this:
+         columnName1  columnName2   ...
 
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
+rowName1 data11 data12 ...
+rowName2 data21 data22 ...
+...
+
+> Both must respect the following names
+
+- dispos.csv :
+
+## Launch app
+
+- Open terminal in project folder
+- Write the following command
+
+```
+npm install
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+```
+npm run dev
+```
+
+## Possible Features Ahead
+
+[ ] Select multiple songs
+[ ] Better UI
+[ ] Date picker for the SelectDateSection
+[ ] Drag and drop data files in the web page
