@@ -1,7 +1,6 @@
-#### repo : https://github.com/phbru/polyjam-station
+#### project repo : https://github.com/phbru/polyjam-station
 
 ## Using git...
-Installing git : https://git-scm.com/download/win
 
 1. Open a git shell where you want to clone the repo
 2. Clone the repo (first time use only): `git clone https://github.com/phbru/polyjam-station`
@@ -11,6 +10,7 @@ Installing git : https://git-scm.com/download/win
 ## Requirements
 
 - Install Node: https://nodejs.org/en/download ( juste pèse sur le carré "Windows Installer" et lance le fichier qui se télécharge)
+- Install git : https://git-scm.com/download/win
 
 ## Prepare data
 
