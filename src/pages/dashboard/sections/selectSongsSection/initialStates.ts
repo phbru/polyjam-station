@@ -1,6 +1,7 @@
 import {
   convertToAvailabilitiesByDates,
   parseCsvFile,
+  parseSongs,
 } from "../../../../data/dataLoader";
 
 import { songsData } from "../../../../data/songsData";
@@ -14,10 +15,13 @@ export const allMusicians: Set<string> = new Set();
 export const initialPossibleIntervals: Array<DailyPossibleInterval> =
   findPossibleIntervals(availabilitiesData, new Set());
 
-const parsedData = await parseCsvFile("dispos.csv");
+const parsedData = await parseCsvFile("./data/dispos.csv");
 console.log("parsedData : ", parsedData);
 convertToAvailabilitiesByDates(parsedData);
 console.log("parsedData : ", parsedData);
+
+const parsedSongs = await parseSongs("./data/songs.csv");
+console.log("parsedSongs : ", parsedSongs);
 
 for (const [songName, songData] of Object.entries(songsData)) {
   songListState.push({
