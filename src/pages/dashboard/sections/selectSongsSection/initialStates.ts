@@ -18,15 +18,15 @@ export const initialPossibleIntervals: Array<DailyPossibleInterval> =
   findPossibleIntervals(availabilitiesData, new Set());
 
 const parsedData = await parseCsvFile("./data/dispos.csv");
-const availabilitiesByDates: AvailabilitiesByDates =
+export const availabilitiesByDates: AvailabilitiesByDates =
   convertToAvailabilitiesByDates(parsedData);
 console.log("availabilitiesByDates : ", availabilitiesByDates);
 
 const parsedSongs = await parseSongs("./data/songs.csv");
-const songDataByNames = convertToSongDataByNames(parsedSongs);
+export const songDataByNames = convertToSongDataByNames(parsedSongs);
 console.log("songDataByNames : ", songDataByNames);
 
-for (const [songName, songData] of Object.entries(songsData)) {
+for (const [songName, songData] of Object.entries(songDataByNames)) {
   songListState.push({
     songName: songName,
     isSelected: false,

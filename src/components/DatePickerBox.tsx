@@ -9,7 +9,11 @@ import { DailyPossibleInterval } from "../types/DailyPossibleInterval";
 import { findPossibleIntervals } from "../pages/dashboard/helpers";
 import { TimeInterval } from "../interfaces/TimeInterval";
 import { Button } from "@mui/material";
-import { availabilitiesData } from "../data/availabilitiesData";
+
+import {
+  availabilitiesByDates,
+  songDataByNames,
+} from "../pages/dashboard/sections/selectSongsSection/initialStates";
 
 const DatePickerBox = () => {
   const { possibleSongsForDate, setPossibleSongsForDate } =
@@ -31,11 +35,11 @@ const DatePickerBox = () => {
   const handlePress = () => {
     const updatedPossibleSongsForDate: SongWithTimeSlots[] = [];
 
-    for (const song in songsData) {
+    for (const song in songDataByNames) {
       const musicianSet = new Set(Object.values(songsData[song].musicians));
 
       const songTimeSlots: DailyPossibleInterval[] = findPossibleIntervals(
-        { selectedDate: availabilitiesData[selectedDate] },
+        { selectedDate: availabilitiesByDates[selectedDate] },
         musicianSet
       );
 
