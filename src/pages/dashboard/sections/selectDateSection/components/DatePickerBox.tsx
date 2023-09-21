@@ -4,7 +4,6 @@ import {
   SongsForPickedDateContextProps,
 } from "../SongsForPickedDateContext";
 import { SongWithTimeSlots } from "../interfaces/SongWithTimeSlots";
-import { songsData } from "../../../../../data/songsData";
 import { DailyPossibleInterval } from "../../../../../types/DailyPossibleInterval";
 import { findPossibleIntervals } from "../../../helpers";
 import { TimeInterval } from "../../../../../interfaces/TimeInterval";
@@ -33,7 +32,9 @@ const DatePickerBox = () => {
     const updatedPossibleSongsForDate: SongWithTimeSlots[] = [];
 
     for (const song in songDataByNames) {
-      const musicianSet = new Set(Object.values(songsData[song].musicians));
+      const musicianSet = new Set(
+        Object.values(songDataByNames[song].musicians)
+      );
 
       const songTimeSlots: DailyPossibleInterval[] = findPossibleIntervals(
         { selectedDate: availabilitiesByDates[selectedDate] },
@@ -45,7 +46,7 @@ const DatePickerBox = () => {
 
       const songForDate: SongWithTimeSlots = {
         songName: song,
-        musicians: Object.values(songsData[song].musicians),
+        musicians: Object.values(songDataByNames[song].musicians),
         possibleTimeSlots: songTimeSlotsIntervals ? songTimeSlotsIntervals : [],
       };
 

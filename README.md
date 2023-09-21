@@ -55,10 +55,12 @@ npm run dev
 
 ## Possible Features Ahead
 
-[ ] Select multiple songs
-[ ] Better UI
-[ ] Don't show instruments with no one
-[ ] Box stuff together
-[ ] Musicians are collapsible
-[ ] Date picker for the SelectDateSection
-[ ] Drag and drop data files in the web page
+- [ ] Show no dates in journée possible
+- [ ] Better UI
+  - [ ] headers...
+  - [ ] Don't show instruments with no one
+  - [ ] Box stuff together
+  - [ ] Musicians are collapsible
+- [ ] Select multiple songs
+- [ ] Date picker for the SelectDateSection
+- [ ] Drag and drop data files in the web page
