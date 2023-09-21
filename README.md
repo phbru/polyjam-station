@@ -1,5 +1,15 @@
 #### project repo : https://github.com/phbru/polyjam-station
 
+## Easy usage...
+Open a powershell terminal at the root of the project (right-click  "open in terminal")
+write the following : 
+```
+> git pull
+> npm install
+> npm run dev
+```
+
+
 ## Using git...
 
 1. Open a git shell where you want to clone the repo
