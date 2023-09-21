@@ -1,8 +1,8 @@
 import { useState } from "react";
-import { SongsForPickedDateContext } from "../contexts/SongsForPickedDateContext";
-import { SongWithTimeSlots } from "../interfaces/SongWithTimeSlots";
-import DatePickerBox from "./DatePickerBox";
-import SongsForPickedDateBox from "./SongsForPickedDateBox";
+import { SongsForPickedDateContext } from "./SongsForPickedDateContext";
+import { SongWithTimeSlots } from "./interfaces/SongWithTimeSlots";
+import DatePickerBox from "./components/DatePickerBox";
+import SongsForPickedDateBox from "./components/SongsForPickedDateBox";
 
 const SelectDateSection = () => {
   const [possibleSongsForDate, setPossibleSongsForDate] = useState<

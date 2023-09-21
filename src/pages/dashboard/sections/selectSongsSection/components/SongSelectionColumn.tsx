@@ -6,7 +6,7 @@ import {
 import { useContext } from "react";
 import { findPossibleIntervals } from "../../../helpers";
 
-import { availabilitiesByDates } from "../initialStates";
+import { availabilitiesByDates } from "../../../initialStates";
 
 const CheckableSongsColumn = () => {
   const {

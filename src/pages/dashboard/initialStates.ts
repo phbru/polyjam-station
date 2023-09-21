@@ -3,14 +3,13 @@ import {
   convertToSongDataByNames,
   parseCsvFile,
   parseSongs,
-} from "../../../../data/dataLoader";
+} from "../../data/dataLoader";
 
-import { songsData } from "../../../../data/songsData";
-import { SelectableSong } from "./interfaces/SelectableSong";
-import { findPossibleIntervals } from "../../helpers";
-import { availabilitiesData } from "../../../../data/availabilitiesData";
-import { DailyPossibleInterval } from "../../../../types/DailyPossibleInterval";
-import { AvailabilitiesByDates } from "../../../../interfaces/AvailabilitiesByDates";
+import { SelectableSong } from "./sections/selectSongsSection/interfaces/SelectableSong";
+import { findPossibleIntervals } from "./helpers";
+import { availabilitiesData } from "../../data/availabilitiesData";
+import { DailyPossibleInterval } from "../../types/DailyPossibleInterval";
+import { AvailabilitiesByDates } from "../../interfaces/AvailabilitiesByDates";
 
 export const songListState: Array<SelectableSong> = [];
 export const allMusicians: Set<string> = new Set();

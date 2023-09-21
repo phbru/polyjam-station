@@ -6,7 +6,7 @@ import {
 import SongSelectionColumn from "./components/SongSelectionColumn";
 import DailyTimeSlotsColumn from "./components/DailyTimeSlotsColumn";
 import { SelectableSong } from "./interfaces/SelectableSong";
-import { initialPossibleIntervals, songListState } from "./initialStates";
+import { initialPossibleIntervals, songListState } from "../../initialStates";
 import { DailyPossibleInterval } from "../../../../types/DailyPossibleInterval";
 
 const SelectSongsSection = () => {

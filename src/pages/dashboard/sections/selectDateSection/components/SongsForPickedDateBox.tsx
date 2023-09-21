@@ -1,11 +1,11 @@
 import { useContext } from "react";
 
-import { TimeInterval } from "../interfaces/TimeInterval";
+import { TimeInterval } from "../../../../../interfaces/TimeInterval";
 import { SongWithTimeSlots } from "../interfaces/SongWithTimeSlots";
 import {
   SongsForPickedDateContext,
   SongsForPickedDateContextProps,
-} from "../contexts/SongsForPickedDateContext";
+} from "../SongsForPickedDateContext";
 
 const SongsForPickedDateBox = () => {
   const { possibleSongsForDate, setPossibleSongsForDate } =

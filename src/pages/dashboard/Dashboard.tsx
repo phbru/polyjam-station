@@ -1,5 +1,5 @@
 import SelectSongsSection from "./sections/selectSongsSection/SelectSongsSection";
-import SelectDateSection from "../../components/SelectDateSection";
+import SelectDateSection from "./sections/selectDateSection/SelectDateSection";
 
 const Dashboard = () => {
   return (

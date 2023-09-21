@@ -1,4 +1,4 @@
-import { TimeInterval } from "./TimeInterval";
+import { TimeInterval } from "../../../../../interfaces/TimeInterval";
 
 export interface SongWithTimeSlots {
   songName: string;

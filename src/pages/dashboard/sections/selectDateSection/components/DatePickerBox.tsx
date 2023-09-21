@@ -2,18 +2,15 @@ import { ChangeEvent, useContext, useState } from "react";
 import {
   SongsForPickedDateContext,
   SongsForPickedDateContextProps,
-} from "../contexts/SongsForPickedDateContext";
+} from "../SongsForPickedDateContext";
 import { SongWithTimeSlots } from "../interfaces/SongWithTimeSlots";
-import { songsData } from "../data/songsData";
-import { DailyPossibleInterval } from "../types/DailyPossibleInterval";
-import { findPossibleIntervals } from "../pages/dashboard/helpers";
-import { TimeInterval } from "../interfaces/TimeInterval";
+import { songsData } from "../../../../../data/songsData";
+import { DailyPossibleInterval } from "../../../../../types/DailyPossibleInterval";
+import { findPossibleIntervals } from "../../../helpers";
+import { TimeInterval } from "../../../../../interfaces/TimeInterval";
 import { Button } from "@mui/material";
 
-import {
-  availabilitiesByDates,
-  songDataByNames,
-} from "../pages/dashboard/sections/selectSongsSection/initialStates";
+import { availabilitiesByDates, songDataByNames } from "../../../initialStates";
 
 const DatePickerBox = () => {
   const { possibleSongsForDate, setPossibleSongsForDate } =
