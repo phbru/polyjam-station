@@ -157,7 +157,19 @@ export function convertToSongDataByNames(dataTable: any) {
 
     for (const entry of Object.entries(row)) {
       if (entry[0] !== "Chanson") {
-        songContent.musicians[entry[0]] = entry[1];
+        if (entry[1] === null) {
+          continue;
+        }
+
+        if (String(entry[1]).includes(",")) {
+          const multipleInstrumentArray = entry[1].split(",");
+
+          for (const [index, instrument] of multipleInstrumentArray.entries()) {
+            songContent.musicians[String(entry[0]) + (index + 1)] = instrument;
+          }
+        } else {
+          songContent.musicians[entry[0]] = entry[1];
+        }
       }
     }
 
