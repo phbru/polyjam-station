@@ -7,6 +7,7 @@ import { useContext } from "react";
 import { findPossibleIntervals } from "../../../helpers";
 
 import { availabilitiesByDates } from "../../../initialStates";
+import ToggleComponent from "../../../../../components/ToggleComponent";
 
 const CheckableSongsColumn = () => {
   const {
@@ -49,23 +50,28 @@ const CheckableSongsColumn = () => {
     <div className="song-selection-column">
       {SelectableSongList.map((song, index) => (
         <div className="song-component" key={index}>
-          <h4 className="song-component__name">
-            {song.songName}
-            <Checkbox
-              checked={song.isSelected}
-              onChange={(event) => handleCheck(event, index)}
-            />
-          </h4>
-          {Object.entries(song.songData.musicians).map(
-            ([instrument, musician]) => (
-              <ul key={instrument}>
-                <li>
-                  <strong>{instrument} :</strong>
-                  {musician}
-                </li>
-              </ul>
-            )
-          )}
+          <ToggleComponent
+            title={
+              <h4 className="song-component__name">
+                {song.songName}
+                <Checkbox
+                  checked={song.isSelected}
+                  onChange={(event) => handleCheck(event, index)}
+                />
+              </h4>
+            }
+          >
+            {Object.entries(song.songData.musicians).map(
+              ([instrument, musician]) => (
+                <ul key={instrument}>
+                  <li>
+                    <strong>{instrument} :</strong>
+                    {musician}
+                  </li>
+                </ul>
+              )
+            )}
+          </ToggleComponent>
         </div>
       ))}
     </div>

@@ -44,9 +44,16 @@ export function convertToAvailabilitiesByDates(
     for (const entry of Object.entries(row)) {
       if (entry[0] !== "Date") {
         //entry is a person
-        dateContent[entry[0]] = convertUnavailabilityToAvailabilityTimeSlots(
-          entry[1]
-        );
+        try {
+          dateContent[entry[0]] = convertUnavailabilityToAvailabilityTimeSlots(
+            entry[1]
+          );
+        } catch {
+          dateContent[entry[0]] = {
+            start: new Time(0, 0),
+            end: new Time(0, 0),
+          };
+        }
       }
     }
 
