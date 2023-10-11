@@ -11,16 +11,19 @@ const DailyTimeSlotsColumn = () => {
   return (
     <div className="daily-time-slots-column">
       <h3>Journées possibles</h3>
-      {dailyPossibleIntervals.map((item) => (
-        <div key={item[0]}>
-          <h4>{item[0]}</h4>
-          {item[1]?.map((x, subIndex) => (
-            <p key={subIndex}>
-              [{x.start.toString()} , {x.end.toString()}]
-            </p>
-          ))}
-        </div>
-      ))}
+      {dailyPossibleIntervals.map(
+        (item) =>
+          item[1] && (
+            <div key={item[0]}>
+              <h4>{item[0]}</h4>
+              {item[1]?.map((x, subIndex) => (
+                <p key={subIndex}>
+                  [{x.start.toString()} , {x.end.toString()}]
+                </p>
+              ))}
+            </div>
+          )
+      )}
     </div>
   );
 };
