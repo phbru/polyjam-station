@@ -49,16 +49,20 @@ const CheckableSongsColumn = () => {
   return (
     <div className="song-selection-column">
       {SelectableSongList.map((song, index) => (
-        <div className="song-component" key={index}>
+        <div className="selectable-song-component" key={index}>
           <ToggleComponent
             title={
-              <h4 className="song-component__name">
-                {song.songName}
+              <div className="selectable-song-component__title">
+                <p className="selectable-song-component__name">
+                  {song.songName}
+                </p>
                 <Checkbox
+                  className="selectable-song-component__checkbox"
                   checked={song.isSelected}
                   onChange={(event) => handleCheck(event, index)}
+                  sx={{ "& .MuiSvgIcon-root": { fontSize: 18 } }}
                 />
-              </h4>
+              </div>
             }
           >
             {Object.entries(song.songData.musicians).map(

@@ -13,12 +13,21 @@ const ToggleComponent: React.FC<ToggleProps> = ({ children, title }) => {
   };
 
   return (
-    <div>
-      <div onClick={toggleContent} className="title">
+    <div className="toggle-component__container">
+      <div className="toggle-component__title">
         {title}
-        <span className={`arrow ${isContentVisible ? "down" : "right"}`}></span>
+        <div
+          onClick={toggleContent}
+          className="toggle-component__arrow-container"
+        >
+          <div
+            className={`toggle-component__arrow ${
+              isContentVisible ? "down" : "right"
+            }`}
+          ></div>
+        </div>
       </div>
-      {isContentVisible && <div className="content">{children}</div>}
+      {isContentVisible && <div>{children}</div>}
     </div>
   );
 };

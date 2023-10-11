@@ -40,11 +40,7 @@ ul {
   padding: 0;
   font-size: 0.8rem;
   list-style-type: none;
-}
-
-ul li {
-  margin-bottom: 0px; /* Adjust this value for your desired spacing */
-  margin-left: 1rem; /* Add some left padding for indentation */
+  margin-left: 0.5rem;
 }
 
 /* Dashboard style */
@@ -54,10 +50,8 @@ ul li {
 }
 .select-songs-section {
   display: flex;
-
   width: 50%;
   padding: 1rem 1rem 1rem 0rem;
-
   border-right: solid;
   border-right-width: 0.25rem;
 }
@@ -71,8 +65,32 @@ ul li {
   padding: 0 1rem 0 3rem;
 }
 
-.song-component__name {
+.selectable-song-component {
+  padding-bottom: 1rem;
+  border-bottom: solid;
+  border-right: solid;
+}
+
+.selectable-song-component__title {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
   margin: 0;
+}
+.selectable-song-component__checkbox {
+}
+
+.MuiButtonBase-root.MuiCheckbox-root.MuiCheckbox-colorPrimary.MuiCheckbox-sizeMedium.PrivateSwitchBase-root.MuiCheckbox-root.MuiCheckbox-colorPrimary.MuiCheckbox-sizeMedium.MuiCheckbox-root.MuiCheckbox-colorPrimary.MuiCheckbox-sizeMedium.selectable-song-component__checkbox {
+  padding: 0;
+}
+
+.selectable-song-component__name {
+  font-weight: bold;
+  margin: 0;
+  margin-top: 0.5rem;
 }
 
 .select-date-section {
@@ -85,17 +103,26 @@ ul li {
 }
 
 /* Toggle component */
-.title {
-  cursor: pointer;
+.toggle-component__title {
   display: flex;
+  justify-content: space-between;
   align-items: center;
 }
 
-.arrow {
-  margin-left: 8px;
+.toggle-component__arrow-container {
+  margin-right: 0.2rem;
+  padding: 0.4rem;
+  border-radius: 0.3rem;
+  height: 0.5rem;
+  cursor: pointer;
+}
+
+.toggle-component__arrow-container:hover {
+  background-color: rgba(211, 211, 211, 0.548);
+}
+
+.toggle-component__arrow {
   transition: transform 0.3s;
-  width: 0;
-  height: 0;
   border-left: 6px solid transparent;
   border-right: 6px solid transparent;
 }
